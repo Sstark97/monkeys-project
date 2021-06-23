@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Categories } from '../model/types';
+import { Categories, Product } from '../model/types';
 
 axios.defaults.baseURL = 'https://private-anon-180d22d3a2-gocco.apiary-mock.com/stores/2/';
 
-const useAxios = () => {
-    const [response, setResponse] = useState<Categories[]>([]);
-    const [error, setError] = useState('');
-    const [loading, setloading] = useState(true);
+const useAxios = (endPoint : string) => {
+    const [response, setResponse] = useState<Categories[]>([]) || useState<Product>();
+    const [error, setError] = useState<string>('');
+    const [loading, setloading] = useState<boolean>(true);
 
-    const fetchData = () => {
+    const fetchData = () : void => {
         axios
-            .get('/categories')
+            .get(endPoint)
             .then((res) => {
                 setResponse(res.data);
             })

@@ -3,7 +3,7 @@ import useAxios from '../hooks/useAxios';
 
 
 const Home = () => {
-    const data = useAxios().response;
+    const data = useAxios('categories').response;
 
 
     return (
@@ -13,6 +13,7 @@ const Home = () => {
             <ul>
                 {data !== null ? data.map(category => <li key={category.categoryId}>{category.name}</li>) : <></>}
             </ul>
+            {console.log(data)}
         </>
     );
 }
