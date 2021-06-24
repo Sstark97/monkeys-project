@@ -14,4 +14,4 @@
       "strictNullChecks": true,
       "lib": ["es6", "dom"],
     },
-  }
+}
