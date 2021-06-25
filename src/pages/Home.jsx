@@ -1,5 +1,6 @@
 import React from 'react';
 import useAxios from '../hooks/useAxios';
+import { Flex, Image, Input, Box, IconButton, list} from '@chakra-ui/react';
 
 
 const Home = () => {
@@ -7,14 +8,12 @@ const Home = () => {
 
 
     return (
-        <>
-            <h2>Hello Monkeys!</h2>
-            <h3>Let's do these</h3>
+        <Box width="70%" height="100%">
             <ul>
                 {data !== undefined ? data.map(category => <li key={category.categoryId}>{category.name}</li>) : <></>}
             </ul>
             {console.log(data)}
-        </>
+        </Box>
     );
 }
 

@@ -5,10 +5,10 @@ import Categories from './Categories';
 
 
 const Layout = ({children}) => (
-    <Flex flexDirection="column">
+    <Flex flexDirection="column" height="100%">
         <ShopHeader />
 
-        <Flex> 
+        <Flex height ="100%"> 
             
             <Categories />
             {children} 
