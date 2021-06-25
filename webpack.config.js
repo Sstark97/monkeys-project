@@ -9,26 +9,18 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.jsx', '.js']
+    extensions: ['.js', '.jsx']
   },
   mode: "development",
   module: {
     rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
-      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
         }
-      }
-      ,
+      },
       {
         test: /\.html$/,
         use: [
@@ -63,6 +55,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     port: 3000
+
   },
   plugins: [
     new HtmlWebPackPlugin({
@@ -70,7 +63,7 @@ module.exports = {
       filename: './index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/[name].css' || './public/index.css'
+      filename: 'assets/[name].css'
     }),
   ]
 };

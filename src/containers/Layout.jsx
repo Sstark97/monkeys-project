@@ -4,7 +4,7 @@ import ShopHeader from './ShopHeader';
 import Categories from './Categories';
 
 
-const Layout = ({children} : Element) => (
+const Layout = ({children}) => (
     <Flex flexDirection="column">
         <ShopHeader />
 

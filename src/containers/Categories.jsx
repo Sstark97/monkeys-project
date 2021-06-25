@@ -8,7 +8,7 @@ const Categories = () => {
 
     return (
         <ul>
-            {data.map(category => <li key={category.categoryId}>{category.name}</li>)}
+            {data !== undefined ? data.map(category => <li key={category.categoryId}>{category.name}</li>) : <></>}
         </ul>
     )
 }
