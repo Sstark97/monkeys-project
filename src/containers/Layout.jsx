@@ -1,7 +1,7 @@
 import React from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 import ShopHeader from './ShopHeader';
-import Categories from './Categories';
+import CategoriesNavBar from './CategoriesNavBar';
 
 
 const Layout = ({children}) => (
@@ -10,8 +10,8 @@ const Layout = ({children}) => (
 
         <Flex height ="100%"> 
             
-            <Categories />
-            {children} 
+            <CategoriesNavBar />
+            <Box my="3rem" width="100%" height="100%">{children}</Box>
         
         </Flex>
 

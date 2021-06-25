@@ -4,7 +4,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://private-anon-180d22d3a2-gocco.apiary-mock.com/stores/2/';
 
 const useAxios = (endPoint) => {
-    const [response, setResponse] = useState();
+    const [response, setResponse] = useState([]);
     const [error, setError] = useState('');
     const [loading, setloading] = useState(true);
 
