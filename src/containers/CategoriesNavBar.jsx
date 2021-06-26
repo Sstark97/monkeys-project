@@ -3,6 +3,7 @@ import { Flex, Text, Wrap, WrapItem} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setCategories } from '../actions';
+import '../assets/styles/categories.css';
 
 import useAxios from '../hooks/useAxios';
 
@@ -18,19 +19,16 @@ const CategoriesNavBar = props => {
     
     return (
         
-        <Flex flexDirection="column" height="100%" width="8%" justifyContent="flex-start" mx="6rem">
-            {console.log('hola')}
-            <Text fontWeight="extrabold" fontSize="2xl" my="4rem" >Categorías</Text>
 
-            <Wrap direction="column" height="50%" spacing="10">
+            <Wrap display= "flex" direction="row" height="50%" spacing="10" width="100%" justifyContent="center" alignItems="center" alignContent="center">
                 {
-                    data.map(category => <WrapItem key={category.categoryId} marginTop="8rem">
-                        <Link to={'/category/' + category.categoryId}>{category.name}</Link>
+                    data.map(category => <WrapItem className="category" key={category.categoryId} marginTop="8rem">
+                        <Link to={'/category/' + category.categoryId}><Text fontWeight="light" fontSize="xl">{category.name}</Text></Link>
                     </WrapItem>) 
                     
                 }
             </Wrap>
-        </Flex>
+
     )
 }
 

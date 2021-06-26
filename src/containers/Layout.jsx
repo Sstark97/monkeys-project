@@ -6,15 +6,14 @@ import CategoriesNavBar from './CategoriesNavBar';
 
 const Layout = ({children}) => (
     <Flex flexDirection="column" height="100%">
-        <ShopHeader />
-
-        <Flex height ="100%"> 
+        <Flex height ="100%" direction="column" justifyContent="center"> 
+            <ShopHeader />
             
             <CategoriesNavBar />
-            <Box my="3rem" width="100%" height="100%">{children}</Box>
         
         </Flex>
 
+            <Box my="3rem" width="100%" height="100%">{children}</Box>
     </Flex>
 )
 
