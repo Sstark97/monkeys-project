@@ -9,7 +9,7 @@ import {
     Icon,
     chakra,
     Tooltip,
-  } from '@chakra-ui/react';
+} from '@chakra-ui/react';
 
 const data = {
     isNew: true,

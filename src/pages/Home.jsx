@@ -4,6 +4,7 @@ import { Flex, Image, Input, Box, IconButton, list, Text} from '@chakra-ui/react
 import CategoryChild from '../components/CategoryChild';
 
 
+
 const Home = () => {
     const data = useAxios('categories').response;
 

@@ -5,7 +5,7 @@ import CategoriesNavBar from './CategoriesNavBar';
 
 
 const Layout = ({children}) => (
-    <Flex flexDirection="column" height="100%">
+    <Flex flexDirection="column" height="50%">
         <Flex height ="100%" direction="column" justifyContent="center"> 
             <ShopHeader />
             
