@@ -33,15 +33,6 @@ const CategoryChild = ({ subCategory }) => {
             rounded="lg"
             shadow="lg"
             position="relative">
-            {data.isNew && (
-              <Circle
-                size="10px"
-                position="absolute"
-                top={2}
-                right={2}
-                bg="red.200"
-              />
-            )}
     
             <Image
               src={data.imageURL}
@@ -54,11 +45,12 @@ const CategoryChild = ({ subCategory }) => {
               </Box>
               <Flex mt="1" justifyContent="space-between" alignContent="center">
                 <Box
-                  fontSize="2xl"
+                  fontSize="lg"
                   fontWeight="semibold"
                   as="h4"
                   lineHeight="tight"
-                  isTruncated>
+                  isTruncated
+                  width="170px">
                   {subCategory !== undefined ? subCategory.name : 'example'}
                 </Box>
               </Flex>

@@ -20,7 +20,7 @@ const Categories = (props) => {
         return (
             <>
 
-            <Text>{props.category.name}</Text>
+            <Text textAlign="center" fontWeight="extrabold" fontSize="2xl" >{props.category.name}</Text>
             <Flex direction="row" height="100%" wrap="wrap" width="100%">
                 {props.category.children.map(child => {
                     return <Flex key={child.categoryId} width="20%"> <CategoryChild subCategory = {child}/> </Flex>

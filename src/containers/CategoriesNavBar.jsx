@@ -18,9 +18,9 @@ const CategoriesNavBar = props => {
     
     return (
         
-        <Flex flexDirection="column" height="100%" width="30%" justifyContent="flex-start" mx="6rem">
+        <Flex flexDirection="column" height="100%" width="8%" justifyContent="flex-start" mx="6rem">
             {console.log('hola')}
-            <Text fontWeight="extrabold" fontSize="2xl" my="4rem" >Categories</Text>
+            <Text fontWeight="extrabold" fontSize="2xl" my="4rem" >Categorías</Text>
 
             <Wrap direction="column" height="50%" spacing="10">
                 {

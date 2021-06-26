@@ -1,6 +1,6 @@
 import React from 'react';
 import useAxios from '../hooks/useAxios';
-import { Flex, Image, Input, Box, IconButton, list} from '@chakra-ui/react';
+import { Flex, Image, Input, Box, IconButton, list, Text} from '@chakra-ui/react';
 import CategoryChild from '../components/CategoryChild';
 
 
@@ -10,9 +10,9 @@ const Home = () => {
 
     return (
         <Box width="70%" height="100%">
-            {/* <ul>
-                {data !== undefined ? data.map(category => <li key={category.categoryId}>{category.name}</li>) : <></>}
-            </ul> */}
+
+            <Text>Esto es el home</Text>
+            
         </Box>
     );
 }
