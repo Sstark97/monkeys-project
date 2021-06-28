@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ChakraProvider } from "@chakra-ui/react";
 import Home from '../pages/Home';
 import Categories from '../pages/Categories';
+import Products from '../pages/Products';
 import Layout from '../containers/Layout';
 
 const App = () => (
@@ -11,7 +12,8 @@ const App = () => (
                 <Layout>
                     <Switch>
                         <Route exact path = "/" component={Home}/> 
-                        <Route exact path = "/category/:categoryId" component={Categories}/> 
+                        <Route exact path = "/category/:categoryId" component={Categories}/>
+                        <Route exact path = "/product/:categoryId" component={Products}/> 
                     </Switch>
                 </Layout>
             </BrowserRouter>

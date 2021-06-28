@@ -8,7 +8,8 @@ import App from './routes/App';
 const initialState = {
     "categories": [],
     "category": {},
-    "products": {}
+    "products": [],
+    "product":{}
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
