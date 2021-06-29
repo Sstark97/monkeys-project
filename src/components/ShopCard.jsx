@@ -54,10 +54,10 @@ const ShopCard = (props) => {
                             ?
                             props.shopCard.map(product => {
                                 return(
-                                    <ListItem key={ product.modelId }>
+                                    <ListItem key={ product.productId }>
                                         <Text as="h2" fontWeight="bold"> {product.name}</Text>
                                         <Text>{product.color}</Text>
-                                        <Text>{product.price}</Text>
+                                        <Text>{product.price}€</Text>
                                         <NumberInput defaultValue={1} min={1} max={20}>
                                             <NumberInputField />
                                             <NumberInputStepper>

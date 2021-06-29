@@ -31,18 +31,24 @@ const ProductChild = (props) => {
 
   const handleOpenDrawInChild = (productId) => {
 
-    props.getProduct(productId);
-    let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
-    setPrice(parseFloat(priceString).toFixed(2));
-
-    console.log(price);
-    let productFormated = {
-      name: props.product.name,
-      color: props.product.color,
-      price
+    if(props.shopCard.find(product => product.productId === productId) === undefined){
+      
+      props.getProduct(productId);
+      let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
+      setPrice(parseFloat(priceString).toFixed(2));
+  
+      console.log(price);
+      let productFormated = {
+        productId: props.product.modelId,
+        name: props.product.name,
+        color: props.product.color,
+        price
+      }
+      
+      props.setIntoShopCard(productFormated);
+      console.log(props.shopCard);
     }
-    props.setIntoShopCard(productFormated);
-    console.log(props.shopCard);
+    
     props.handleOpenDraw();
   }
 

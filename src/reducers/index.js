@@ -30,7 +30,7 @@ const reducer = (state, action) => {
         case 'SET_INTO_SHOP_CARD':
             return {
                 ...state,
-                shopCard: state.shopCard !== undefined ? [...state.shopCard, action.payload] : []
+                shopCard: state.shopCard !== undefined  ? [...state.shopCard, action.payload] : []
             };
         case 'GET_SHOP_CARD':
             return [
