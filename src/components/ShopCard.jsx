@@ -10,10 +10,17 @@ import {
     DrawerContent,
     DrawerCloseButton,
     useDisclosure,
-    Button
+    Button,
+    Flex,
+    Text,
+    NumberInput,
+    NumberInputField,
+    NumberInputStepper,
+    NumberIncrementStepper,
+    NumberDecrementStepper,
 } from '@chakra-ui/react';
 
-const ShopCard = () => {
+const ShopCard = ({color, name, price}) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
 
@@ -30,16 +37,27 @@ const ShopCard = () => {
             <DrawerOverlay />
             <DrawerContent>
                 <DrawerCloseButton />
-                <DrawerHeader>Create your account</DrawerHeader>
+                <DrawerHeader>Carrito de Compra</DrawerHeader>
 
                 <DrawerBody>
+                    <Flex direction="column">
+                        <Text as="h2" fontWeight="bold"> {name}</Text>
+                        <Text>{color}</Text>
+                        <Text>{price}</Text>
+                        <NumberInput defaultValue={1} min={1} max={20}>
+                            <NumberInputField />
+                            <NumberInputStepper>
+                                <NumberIncrementStepper />
+                                <NumberDecrementStepper />
+                            </NumberInputStepper>
+                        </NumberInput>
+
+                    </Flex>
+
                 </DrawerBody>
 
-                <DrawerFooter>
-                <Button variant="outline" mr={3} onClick={onClose}>
-                    Cancel
-                </Button>
-                <Button colorScheme="blue">Save</Button>
+                <DrawerFooter display="flex" justifyContent="center">
+                    <Button colorScheme="blue">Finalizar Compra</Button>
                 </DrawerFooter>
             </DrawerContent>
             </Drawer>  

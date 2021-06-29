@@ -73,7 +73,7 @@ const ProductChild = ({product}) => {
                 color={'gray.800'}
                 fontSize={'1.2em'}>
                 
-                <ShopCard />
+                <ShopCard color={product.color} name={product.name} price={price}/>
 
               </Tooltip>
             </Flex>
