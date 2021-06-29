@@ -13,7 +13,6 @@ const Products = (props) => {
     const getData = async () => {
         const resp = await axios.get(`https://private-anon-180d22d3a2-gocco.apiary-mock.com/stores/2/products/search?categoryId=${categoryId}`);
         data = resp.data.results;
-        console.log(data)
         props.setProducts(data);
     }
 
@@ -28,7 +27,7 @@ const Products = (props) => {
         return (
             <Flex direction="row" height="100%" wrap="wrap" width="100%">
                 {props.products.map(child => {
-                    return <Flex key={child.modelId} width="20%"> <ProductChild subCategory = {child}/> </Flex>
+                    return <Flex key={child.modelId} width="20%"> <ProductChild product = {child}/> </Flex>
                 })}
             
             </Flex>

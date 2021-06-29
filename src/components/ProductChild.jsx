@@ -1,35 +1,48 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { FiShoppingCart } from 'react-icons/fi';
+import notFound from '../assets/static/notFound.png';
 import {
     Flex,
-    Circle,
     Box,
     Image,
-    Badge,
     useColorModeValue,
     Icon,
     chakra,
     Tooltip,
-    Wrap,
-    WrapItem,
-    Text
+    Text,
+    
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
 
 const data = {
-    isNew: true,
-    imageURL:
-      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80',
-    name: 'Wayfarer Classic',
-    price: 4.5,
-    rating: 4.2,
-    numReviews: 34,
+isNew: true,
+imageURL:
+    'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80',
+name: 'Wayfarer Classic',
+price: 4.5,
+rating: 4.2,
+numReviews: 34,
 };
 
-const ProductChild = ({ subCategory }) => {
-    console.log(subCategory)
+const ProductChild = ({product}) => {
 
+  const [price,setPrice] = useState(0);
+  const [image, setImage] = useState(product.images[0])
+
+  useEffect(() => {
+
+    let priceString = String(product.finalPrice).substring(0,2) + '.' + String(product.finalPrice).substring(2,4);
+    setPrice(parseFloat(priceString).toFixed(2));
+
+  },[]);
+
+  const handleImageNotFound = (event) => {
+    event.target.src = notFound;
+    setImage(event.target.src);
+  }
+
+  console.log(product)
     return (
-        <Flex p={50} w="full" alignItems="center" justifyContent="center">
+      <Flex p={50} w="full" alignItems="center" justifyContent="center">
         <Box
           bg={useColorModeValue('white', 'gray.800')}
           maxW="sm"
@@ -37,31 +50,49 @@ const ProductChild = ({ subCategory }) => {
           rounded="lg"
           shadow="lg"
           position="relative">
-  
+
           <Image
-            src={data.imageURL}
-            alt={`Picture of Pepe`}
+            src={image}
+            alt={`Picture of ${product.name}`}
             roundedTop="lg"
+            onError={handleImageNotFound}
           />
   
           <Box p="6">
-            <Box d="flex" alignItems="baseline">
-            </Box>
             <Flex mt="1" justifyContent="space-between" alignContent="center">
               <Box
-                fontSize="lg"
+                fontSize="2xl"
                 fontWeight="semibold"
                 as="h4"
                 lineHeight="tight"
                 isTruncated
                 width="170px">
-                {subCategory !== undefined ? subCategory.name : 'example'}
+                {product !== undefined ? <Text as="span" fontSize="md">{product.name}</Text> : 'example'}
+              </Box>
+              <Tooltip
+                label="Add to cart"
+                bg="white"
+                placement={'top'}
+                color={'gray.800'}
+                fontSize={'1.2em'}>
+                <chakra.a href={'#'} display={'flex'}>
+                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                </chakra.a>
+              </Tooltip>
+            </Flex>
+  
+            <Flex justifyContent="space-between" alignContent="center">
+              <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
+                {price}
+                <Box as="span" color={'gray.600'} fontSize="lg">
+                  €
+                </Box>
               </Box>
             </Flex>
           </Box>
         </Box>
       </Flex>
-    )
+    );
 }
-
+  
 export default ProductChild;
