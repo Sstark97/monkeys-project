@@ -20,7 +20,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 products: state.products || []
-            }
+            };
+        case 'SET_INTO_SHOP_CARD':
+            return {
+                ...state,
+                shopCard: [...state, action.payload]
+            };
     }
 
 }

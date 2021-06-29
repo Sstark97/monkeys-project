@@ -17,3 +17,8 @@ export const getProducts = payload => ({
     type: 'GET_PRODUCTS',
     payload,
 });
+
+export const setIntoShopCard = payload => ({
+    type: 'SET_INTO_SHOP_CARD',
+    payload,
+});
