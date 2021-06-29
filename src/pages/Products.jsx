@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState } from 'react';
-import { getProducts, setProducts} from '../actions';
+import { getProducts, setProducts, setIntoShopCard} from '../actions';
 import { connect } from 'react-redux';
 import ProductChild from '../components/ProductChild';
 import { Flex } from "@chakra-ui/react";
@@ -30,6 +30,7 @@ const Products = (props) => {
     useEffect(() => {
         getData();
         props.getProducts();
+        props.setIntoShopCard({});
 
     }, []);
 
@@ -54,12 +55,14 @@ const Products = (props) => {
 const mapStateToProps = state => {
     return {
         products: state.products,
+        shopCard: state.shopCard
     };
 };
 
 const mapDispatchToProps = {
     setProducts,
-    getProducts
+    getProducts,
+    setIntoShopCard
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Products);

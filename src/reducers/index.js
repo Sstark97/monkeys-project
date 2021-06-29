@@ -21,11 +21,21 @@ const reducer = (state, action) => {
                 ...state,
                 products: state.products || []
             };
+        case 'GET_PRODUCT':
+            return {
+                ...state,
+                product: state.products.find(item => item.id === Number(action.payload)) 
+                || []
+            };
         case 'SET_INTO_SHOP_CARD':
             return {
                 ...state,
-                shopCard: [...state, action.payload]
+                shopCard: state.shopCard !== undefined ? [...state.shopCard, action.payload] : []
             };
+        case 'GET_SHOP_CARD':
+            return [
+                ...state.shopCard
+            ];
     }
 
 }

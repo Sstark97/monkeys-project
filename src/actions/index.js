@@ -18,7 +18,17 @@ export const getProducts = payload => ({
     payload,
 });
 
+export const getProduct = payload => ({
+    type: 'GET_PRODUCT',
+    payload,
+})
+
 export const setIntoShopCard = payload => ({
     type: 'SET_INTO_SHOP_CARD',
+    payload,
+});
+
+export const getShopCard = payload => ({
+    type: 'GET_SHOP_CARD',
     payload,
 });

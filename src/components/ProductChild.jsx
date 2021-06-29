@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import notFound from '../assets/static/notFound.png';
+import { getProduct, setIntoShopCard } from '../actions';
+import { connect } from 'react-redux';
 import { FiShoppingCart } from 'react-icons/fi';
 import {
     Flex,
@@ -9,29 +11,17 @@ import {
     Tooltip,
     Text,
     Button,
-    Icon,
-    useDisclosure
+    Icon
 } from '@chakra-ui/react';
 
-const data = {
-isNew: true,
-imageURL:
-    'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80',
-name: 'Wayfarer Classic',
-price: 4.5,
-rating: 4.2,
-numReviews: 34,
-};
-
-const ProductChild = ({product, btnRef, handleOpenDraw}) => {
+const ProductChild = (props) => {
 
   const [price,setPrice] = useState(0);
-  const [image, setImage] = useState(product.images[0]);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [image, setImage] = useState(props.product.images[0]);
 
   useEffect(() => {
 
-    let priceString = String(product.finalPrice).substring(0,2) + '.' + String(product.finalPrice).substring(2,4);
+    let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
     setPrice(parseFloat(priceString).toFixed(2));
 
   },[]);
@@ -42,11 +32,12 @@ const ProductChild = ({product, btnRef, handleOpenDraw}) => {
   }
 
   const handleOpenDrawInChild = (productId) => {
-    console.log(productId);
-    handleOpenDraw();
+    props.getProduct(productId);
+    props.setIntoShopCard(props.product);
+    console.log(props.shopCard);
+    props.handleOpenDraw();
   }
 
-  console.log(btnRef)
     return (
       <Flex p={50} w="full" alignItems="center" justifyContent="center">
         <Box
@@ -59,7 +50,7 @@ const ProductChild = ({product, btnRef, handleOpenDraw}) => {
 
           <Image
             src={image}
-            alt={`Picture of ${product.name}`}
+            alt={`Picture of ${props.product.name}`}
             roundedTop="lg"
             onError={handleImageNotFound}
           />
@@ -73,7 +64,7 @@ const ProductChild = ({product, btnRef, handleOpenDraw}) => {
                 lineHeight="tight"
                 isTruncated
                 width="170px">
-                {product !== undefined ? <Text as="span" fontSize="md">{product.name}</Text> : 'example'}
+                {props.product !== undefined ? <Text as="span" fontSize="md">{props.product.name}</Text> : 'example'}
               </Box>
               <Tooltip
                 label="Add to cart"
@@ -81,9 +72,8 @@ const ProductChild = ({product, btnRef, handleOpenDraw}) => {
                 placement={'top'}
                 color={'gray.800'}
                 fontSize={'1.2em'}>
-{/*                 
-                <ShopCard color={product.color} name={product.name} price={price}/> */}
-                <Button ref={btnRef} onClick={() => {handleOpenDrawInChild(product.modelId)}}><Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'}/></Button>
+
+                <Button ref={props.btnRef} onClick={() => {handleOpenDrawInChild(props.product.modelId)}}><Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'}/></Button>
 
               </Tooltip>
             </Flex>
@@ -101,5 +91,17 @@ const ProductChild = ({product, btnRef, handleOpenDraw}) => {
       </Flex>
     );
 }
+
+const mapStateToProps = state => {
+  return {
+    shopCard: state.shopCard
+  }
+
+}
+
+const mapDispatchToProps = {
+  getProduct,
+  setIntoShopCard
+};
   
-export default ProductChild;
+export default connect(mapStateToProps,mapDispatchToProps)(ProductChild);
