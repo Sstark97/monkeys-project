@@ -57,7 +57,7 @@ const ShopCard = (props) => {
                                     <ListItem key={ product.modelId }>
                                         <Text as="h2" fontWeight="bold"> {product.name}</Text>
                                         <Text>{product.color}</Text>
-                                        <Text>{product.finalPrice}</Text>
+                                        <Text>{product.price}</Text>
                                         <NumberInput defaultValue={1} min={1} max={20}>
                                             <NumberInputField />
                                             <NumberInputStepper>

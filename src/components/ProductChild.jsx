@@ -16,24 +16,32 @@ import {
 
 const ProductChild = (props) => {
 
-  const [price,setPrice] = useState(0);
+  const [price,setPrice] = useState([]);
   const [image, setImage] = useState(props.product.images[0]);
-
-  useEffect(() => {
-
-    let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
-    setPrice(parseFloat(priceString).toFixed(2));
-
-  },[]);
 
   const handleImageNotFound = (event) => {
     event.target.src = notFound;
     setImage(event.target.src);
   }
 
+  useEffect(() => {
+    let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
+    setPrice(parseFloat(priceString).toFixed(2));
+  })
+
   const handleOpenDrawInChild = (productId) => {
+
     props.getProduct(productId);
-    props.setIntoShopCard(props.product);
+    let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
+    setPrice(parseFloat(priceString).toFixed(2));
+
+    console.log(price);
+    let productFormated = {
+      name: props.product.name,
+      color: props.product.color,
+      price
+    }
+    props.setIntoShopCard(productFormated);
     console.log(props.shopCard);
     props.handleOpenDraw();
   }
