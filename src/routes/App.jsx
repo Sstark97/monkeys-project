@@ -17,7 +17,6 @@ const App = () => (
                     </Switch>
                 </Layout>
             </BrowserRouter>
-
     </ChakraProvider>
 
 );

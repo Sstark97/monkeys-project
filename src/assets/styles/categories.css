@@ -1,12 +1,3 @@
 .category:hover{
     text-decoration: underline;
 }
-
-.category2{
-    display:none;
-
-}
-
-.category2:hover{
-    display: block;
-}

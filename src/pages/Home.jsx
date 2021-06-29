@@ -1,9 +1,6 @@
 import React from 'react';
 import useAxios from '../hooks/useAxios';
-import { Flex, Image, Input, Box, IconButton, list, Text} from '@chakra-ui/react';
-import CategoryChild from '../components/CategoryChild';
-
-
+import { Box, Text} from '@chakra-ui/react';
 
 const Home = () => {
     const data = useAxios('categories').response;

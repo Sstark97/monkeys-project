@@ -26,6 +26,7 @@ const data = {
 };
 
 const ProductChild = ({ subCategory }) => {
+    console.log(subCategory)
 
     return (
         <Flex p={50} w="full" alignItems="center" justifyContent="center">

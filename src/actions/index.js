@@ -13,7 +13,7 @@ export const setProducts = payload => ({
     payload,
 });
 
-export const getProduct = payload => ({
-    type: 'GET_PRODUCT',
+export const getProducts = payload => ({
+    type: 'GET_PRODUCTS',
     payload,
-})
+});
