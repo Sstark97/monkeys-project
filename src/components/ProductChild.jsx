@@ -1,16 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import { FiShoppingCart } from 'react-icons/fi';
+import React, {useState, useEffect, useRef} from 'react';
 import notFound from '../assets/static/notFound.png';
+import ShopCard from './ShopCard';
 import {
     Flex,
     Box,
     Image,
     useColorModeValue,
-    Icon,
-    chakra,
     Tooltip,
     Text,
-    
 } from '@chakra-ui/react';
 
 const data = {
@@ -26,7 +23,7 @@ numReviews: 34,
 const ProductChild = ({product}) => {
 
   const [price,setPrice] = useState(0);
-  const [image, setImage] = useState(product.images[0])
+  const [image, setImage] = useState(product.images[0]);
 
   useEffect(() => {
 
@@ -75,9 +72,9 @@ const ProductChild = ({product}) => {
                 placement={'top'}
                 color={'gray.800'}
                 fontSize={'1.2em'}>
-                <chakra.a href={'#'} display={'flex'}>
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
-                </chakra.a>
+                
+                <ShopCard />
+
               </Tooltip>
             </Flex>
   
