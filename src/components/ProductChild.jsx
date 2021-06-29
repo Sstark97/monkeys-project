@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import notFound from '../assets/static/notFound.png';
-import ShopCard from './ShopCard';
+import { FiShoppingCart } from 'react-icons/fi';
 import {
     Flex,
     Box,
@@ -8,6 +8,9 @@ import {
     useColorModeValue,
     Tooltip,
     Text,
+    Button,
+    Icon,
+    useDisclosure
 } from '@chakra-ui/react';
 
 const data = {
@@ -20,10 +23,11 @@ rating: 4.2,
 numReviews: 34,
 };
 
-const ProductChild = ({product}) => {
+const ProductChild = ({product, btnRef, handleOpenDraw}) => {
 
   const [price,setPrice] = useState(0);
   const [image, setImage] = useState(product.images[0]);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
 
@@ -37,7 +41,12 @@ const ProductChild = ({product}) => {
     setImage(event.target.src);
   }
 
-  console.log(product)
+  const handleOpenDrawInChild = (productId) => {
+    console.log(productId);
+    handleOpenDraw();
+  }
+
+  console.log(btnRef)
     return (
       <Flex p={50} w="full" alignItems="center" justifyContent="center">
         <Box
@@ -72,8 +81,9 @@ const ProductChild = ({product}) => {
                 placement={'top'}
                 color={'gray.800'}
                 fontSize={'1.2em'}>
-                
-                <ShopCard color={product.color} name={product.name} price={price}/>
+{/*                 
+                <ShopCard color={product.color} name={product.name} price={price}/> */}
+                <Button ref={btnRef} onClick={() => {handleOpenDrawInChild(product.modelId)}}><Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'}/></Button>
 
               </Tooltip>
             </Flex>

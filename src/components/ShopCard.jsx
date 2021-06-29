@@ -9,7 +9,6 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    useDisclosure,
     Button,
     Flex,
     Text,
@@ -20,18 +19,18 @@ import {
     NumberDecrementStepper,
 } from '@chakra-ui/react';
 
-const ShopCard = ({color, name, price}) => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const btnRef = useRef();
+const ShopCard = ({btnRef, drawShow, handleCloseDraw}) => {
+
+    const handleCloseDrawInChild = () => {
+        handleCloseDraw();
+    }
 
     return (
         <>
-
-            <Button ref={btnRef} onClick={onOpen}><Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'}/></Button>
             <Drawer
-            isOpen={isOpen}
+            isOpen={drawShow}
             placement="right"
-            onClose={onClose}
+            onClose={handleCloseDrawInChild}
             finalFocusRef={btnRef}
             >
             <DrawerOverlay />
@@ -41,9 +40,9 @@ const ShopCard = ({color, name, price}) => {
 
                 <DrawerBody>
                     <Flex direction="column">
-                        <Text as="h2" fontWeight="bold"> {name}</Text>
-                        <Text>{color}</Text>
-                        <Text>{price}</Text>
+                        <Text as="h2" fontWeight="bold"> dwf</Text>
+                        <Text>rff</Text>
+                        <Text>grgr</Text>
                         <NumberInput defaultValue={1} min={1} max={20}>
                             <NumberInputField />
                             <NumberInputStepper>
