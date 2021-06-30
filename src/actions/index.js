@@ -32,3 +32,8 @@ export const getShopCard = payload => ({
     type: 'GET_SHOP_CARD',
     payload,
 });
+
+export const getOnlyOneToShopCard = payload => ({
+    type: 'GET_ONLY_ONE_TO_SHOP_CARD',
+    payload,
+});

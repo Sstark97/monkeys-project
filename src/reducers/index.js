@@ -36,6 +36,12 @@ const reducer = (state, action) => {
             return [
                 ...state.shopCard
             ];
+        case 'GET_ONLY_ONE_TO_SHOP_CARD':
+            return {
+                ...state,
+                shopProduct: state.shopCard.find(item => item.productId === action.payload) !== undefined ? state.shopCard.find(item => item.productId === action.payload) : {}
+            };
+            
     }
 
 }

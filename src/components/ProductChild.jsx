@@ -52,7 +52,8 @@ const ProductChild = (props) => {
         name: props.product.name,
         color: props.product.color,
         price,
-        size: currentSize
+        size: currentSize,
+        amount: 1
       }
 
       handleSetFinalPrice(productFormated)

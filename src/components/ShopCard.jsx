@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { getOnlyOneToShopCard } from '../actions';
 import {
     Icon,
     Drawer,
@@ -25,7 +26,22 @@ const ShopCard = (props) => {
     const handleCloseDrawInChild = () => {
 
         props.handleCloseDraw();
+        props.getOnlyOneToShopCard('');
 
+    }
+
+    const handleAmountChange = (event, productId) => {
+        
+        console.log(event);
+        console.log(productId);
+        console.log(props.shopProduct)
+        handleGetProduct(productId);
+        //props.shopProduct.amount = parseInt(event) ;
+        console.log(props.shopProduct);
+    }
+
+    const handleGetProduct = productId => {
+        props.getOnlyOneToShopCard(productId)
     }
 
     return (
@@ -54,7 +70,7 @@ const ShopCard = (props) => {
                                             <Text as="h2" fontWeight="bold"> {product.name}</Text>
                                             <Text>{`Color ${product.color}, talla ${product.size}`}</Text>
                                             <Text>{product.price}€</Text>
-                                            <NumberInput defaultValue={1} min={1} max={20}>
+                                            <NumberInput defaultValue={1} min={1} max={20} onChange={(event) => {handleAmountChange(event,product.productId)}} >
                                                 <NumberInputField />
                                                 <NumberInputStepper>
                                                     <NumberIncrementStepper />
@@ -95,10 +111,15 @@ const mapStateToProps = state => {
 
     return {
 
-      shopCard: state.shopCard
+      shopCard: state.shopCard,
+      shopProduct: state.shopProduct
 
     };
   
 }
+
+const mapDispatchToProps = {
+    getOnlyOneToShopCard,
+}
   
-export default connect(mapStateToProps, null)(ShopCard);
+export default connect(mapStateToProps, mapDispatchToProps)(ShopCard);

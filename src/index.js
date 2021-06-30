@@ -10,7 +10,8 @@ const initialState = {
     "category": {},
     "products": [],
     "product":{},
-    "shopCard": []
+    "shopCard": [],
+    "shopProduct": {}
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
