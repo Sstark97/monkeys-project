@@ -18,6 +18,7 @@ const ProductChild = (props) => {
 
   const [price,setPrice] = useState([]);
   const [image, setImage] = useState(props.product.images[0]);
+  const [finalPrice,setFinalPrice] = useState([0.00]);
 
   const handleImageNotFound = (event) => {
     event.target.src = notFound;
@@ -27,7 +28,7 @@ const ProductChild = (props) => {
   useEffect(() => {
     let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
     setPrice(parseFloat(priceString).toFixed(2));
-  })
+  },finalPrice)
 
   const handleOpenDrawInChild = (productId) => {
 
@@ -42,14 +43,28 @@ const ProductChild = (props) => {
         productId: props.product.modelId,
         name: props.product.name,
         color: props.product.color,
-        price
+        price,
       }
-      
-      props.setIntoShopCard(productFormated);
-      console.log(props.shopCard);
+      handleSetFinalPrice(productFormated)
     }
-    
+
     props.handleOpenDraw();
+  }
+
+  const handleSetFinalPrice = (productFormated) => {
+    console.log(productFormated);
+    if(props.shopCard[0] !== undefined){
+      let shopPrice = props.shopCard.reduce((accumulator,current) => {console.log(current); return accumulator + Number(current.price)},Number(props.shopCard[props.shopCard.length - 1].total));
+      productFormated.total = shopPrice;
+      // setFinalPrice(total)
+      props.setIntoShopCard(productFormated);
+      console.log(productFormated)
+    } else {
+      console.log(parseFloat(productFormated.price).toFixed(2))
+      productFormated.total = parseFloat(productFormated.price).toFixed(2);
+      props.setIntoShopCard(productFormated);
+    }
+
   }
 
     return (
