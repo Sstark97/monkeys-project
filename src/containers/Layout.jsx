@@ -2,20 +2,23 @@ import React from 'react';
 import { Flex, Box } from '@chakra-ui/react';
 import ShopHeader from './ShopHeader';
 import CategoriesNavBar from './CategoriesNavBar';
+import Footer from './Footer';
 
 
 const Layout = ({children}) => (
-    <Flex flexDirection="column" height="50%">
+    <>
 
-        <Flex height ="100%" direction="column" justifyContent="center"> 
+        <Flex height ="20%" direction="column" justifyContent="center"> 
 
             <ShopHeader />
             <CategoriesNavBar />
 
         </Flex>
-        <Box my="3rem" width="100%" height="100%">{children}</Box>
+        <Box my="3rem" width="100%" >{children}</Box>
+        <Box marginTop="96" width="100%" height="20%"><Footer /></Box>
 
-    </Flex>
+    </>
+    
 );
 
 export default Layout;

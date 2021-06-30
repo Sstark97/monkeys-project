@@ -74,6 +74,9 @@ src/
 |   |   |
 |   |   |
 |   |-- ShopHeader.jsx
+|   |   |
+|   |   |
+|   |-- Footer.jsx
 |-- hooks/
 |   |-- useAxios.js
 |-- pages/

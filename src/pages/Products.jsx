@@ -44,11 +44,11 @@ const Products = (props) => {
     if(props.products !== undefined){
 
         return (
-            <Flex direction="row" height="100%" wrap="wrap" width="100%">
+            <Flex direction="row" height="80%" wrap="wrap" width="100%">
 
                 {props.products.map(child => {
 
-                    return (<Flex key={child.modelId} width="20%"> 
+                    return (<Flex key={child.modelId} width="20%" maxHeight="fit-content"> 
                                 <ProductChild product = {child} btnRef={btnRef} handleOpenDraw={handleOpenDraw} /> 
                            </Flex>);
                 })};
