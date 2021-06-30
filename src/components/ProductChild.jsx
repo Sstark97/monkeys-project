@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef } from 'react';
 import notFound from '../assets/static/notFound.png';
 import { getProduct, setIntoShopCard } from '../actions';
 import { connect } from 'react-redux';
@@ -11,13 +11,16 @@ import {
     Tooltip,
     Text,
     Button,
-    Icon
+    Icon,
+    Select
 } from '@chakra-ui/react';
 
 const ProductChild = (props) => {
 
   const [price,setPrice] = useState([]);
   const [image, setImage] = useState(props.product.images[0]);
+  const [currentSize, setCurrentSize] = useState('');
+  // const selectSizeRef = useRef();
 
   const handleImageNotFound = (event) => {
 
@@ -42,12 +45,14 @@ const ProductChild = (props) => {
       props.getProduct(productId);
       let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
       setPrice(parseFloat(priceString).toFixed(2));
+      console.log(currentSize);
 
       let productFormated = {
         productId: props.product.modelId,
         name: props.product.name,
         color: props.product.color,
         price,
+        size: currentSize
       }
 
       handleSetFinalPrice(productFormated)
@@ -73,10 +78,17 @@ const ProductChild = (props) => {
 
   }
 
+  const handleSizeChange = event => {
+    event.preventDefault();
+    let size = event.target.value;
+    console.log(size);
+    setCurrentSize(size);
+  }
+
     return (
 
       <Flex p={50} w="full" alignItems="center" justifyContent="center">
-        
+
         <Box
           bg={useColorModeValue('white', 'gray.800')}
           maxW="sm"
@@ -135,6 +147,14 @@ const ProductChild = (props) => {
               </Box>
 
             </Flex>
+
+            <Select placeholder="Seleccione una talla" onChange={handleSizeChange}>
+
+              {props.product.sizes.map(size => <option key={size.variantId} value={`${size.name} meses`}>{`${size.name} meses`}</option>)}
+
+            </Select>
+
+
 
           </Box>
 

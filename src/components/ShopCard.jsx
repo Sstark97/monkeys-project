@@ -52,7 +52,7 @@ const ShopCard = (props) => {
                                     return(
                                         <ListItem key={ product.productId }>
                                             <Text as="h2" fontWeight="bold"> {product.name}</Text>
-                                            <Text>{product.color}</Text>
+                                            <Text>{`Color ${product.color}, talla ${product.size}`}</Text>
                                             <Text>{product.price}€</Text>
                                             <NumberInput defaultValue={1} min={1} max={20}>
                                                 <NumberInputField />
