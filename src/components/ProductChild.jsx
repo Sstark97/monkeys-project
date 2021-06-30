@@ -18,33 +18,38 @@ const ProductChild = (props) => {
 
   const [price,setPrice] = useState([]);
   const [image, setImage] = useState(props.product.images[0]);
-  const [finalPrice,setFinalPrice] = useState([0.00]);
 
   const handleImageNotFound = (event) => {
+
     event.target.src = notFound;
     setImage(event.target.src);
+
   }
 
   useEffect(() => {
+
     let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
     setPrice(parseFloat(priceString).toFixed(2));
-  },finalPrice)
+
+  },[])
 
   const handleOpenDrawInChild = (productId) => {
 
-    if(props.shopCard.find(product => product.productId === productId) === undefined){
+    const producRepeat = props.shopCard.find(product => product.productId === productId)
+
+    if(!producRepeat){
       
       props.getProduct(productId);
       let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
       setPrice(parseFloat(priceString).toFixed(2));
-  
-      console.log(price);
+
       let productFormated = {
         productId: props.product.modelId,
         name: props.product.name,
         color: props.product.color,
         price,
       }
+
       handleSetFinalPrice(productFormated)
     }
 
@@ -52,23 +57,26 @@ const ProductChild = (props) => {
   }
 
   const handleSetFinalPrice = (productFormated) => {
-    console.log(productFormated);
+
     if(props.shopCard[0] !== undefined){
-      let shopPrice = props.shopCard.reduce((accumulator,current) => {console.log(current); return accumulator + Number(current.price)},Number(props.shopCard[props.shopCard.length - 1].total));
-      productFormated.total = shopPrice;
-      // setFinalPrice(total)
+
+      const shopTotal = Number(props.shopCard[props.shopCard.length - 1].total);
+      productFormated.total = shopTotal + Number(productFormated.price);
       props.setIntoShopCard(productFormated);
-      console.log(productFormated)
+
     } else {
-      console.log(parseFloat(productFormated.price).toFixed(2))
+
       productFormated.total = parseFloat(productFormated.price).toFixed(2);
       props.setIntoShopCard(productFormated);
+
     }
 
   }
 
     return (
+
       <Flex p={50} w="full" alignItems="center" justifyContent="center">
+        
         <Box
           bg={useColorModeValue('white', 'gray.800')}
           maxW="sm"
@@ -85,7 +93,9 @@ const ProductChild = (props) => {
           />
   
           <Box p="6">
+
             <Flex mt="1" justifyContent="space-between" alignContent="center">
+
               <Box
                 fontSize="2xl"
                 fontWeight="semibold"
@@ -95,6 +105,7 @@ const ProductChild = (props) => {
                 width="170px">
                 {props.product !== undefined ? <Text as="span" fontSize="md">{props.product.name}</Text> : 'example'}
               </Box>
+
               <Tooltip
                 label="Add to cart"
                 bg="white"
@@ -102,22 +113,35 @@ const ProductChild = (props) => {
                 color={'gray.800'}
                 fontSize={'1.2em'}>
 
-                <Button ref={props.btnRef} onClick={() => {handleOpenDrawInChild(props.product.modelId)}}><Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'}/></Button>
+                <Button ref={props.btnRef} onClick={() => {handleOpenDrawInChild(props.product.modelId)}}>
+
+                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'}/>
+
+                </Button>
 
               </Tooltip>
+
             </Flex>
   
             <Flex justifyContent="space-between" alignContent="center">
+
               <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
+
                 {price}
                 <Box as="span" color={'gray.600'} fontSize="lg">
                   €
                 </Box>
+
               </Box>
+
             </Flex>
+
           </Box>
+
         </Box>
+
       </Flex>
+
     );
 }
 

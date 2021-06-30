@@ -9,7 +9,7 @@ const reducer = (state, action) => {
         case 'GET_CATEGORY':
             return {
                 ...state,
-                category: state.categories.find(category => {console.log(category);return category.categoryId === action.payload}) || []
+                category: state.categories.find(category => category.categoryId === action.payload) || []
             }
         case 'SET_PRODUCTS':
             return {

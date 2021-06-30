@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
     Icon,
@@ -22,23 +22,11 @@ import {
 
 const ShopCard = (props) => {
 
-    // const [shop, setShop] = useState([])
-    // const [finalPrice,setFinalPrice] = useState([0.0]);
-
-    // useEffect(() => {
-
-    // },finalPrice)
-
     const handleCloseDrawInChild = () => {
-        // handleSetFinalPrice();
-        props.handleCloseDraw();
-    }
 
-    // const handleSetFinalPrice = () => {
-    //     let shopPrice = props.shopCard.reduce((accumulator,current) => {console.log(current); return accumulator + Number(current.price)},0.00);
-    //     setFinalPrice([shopPrice])
-    //     console.log(shopPrice)
-    // }
+        props.handleCloseDraw();
+
+    }
 
     return (
         <>
@@ -77,7 +65,7 @@ const ShopCard = (props) => {
                                     )
                                 })}
                                 <Text display="flex" alignSelf="flex-end">Final Price: {props.shopCard[0] !== undefined
-                                    ?   //console.log(props.shopCard)
+                                    ?  
                                         props.shopCard[props.shopCard.length - 1].total
                                     : 0}€
                                 </Text>
@@ -104,14 +92,13 @@ const ShopCard = (props) => {
 };
 
 const mapStateToProps = state => {
-    return {
-      shopCard: state.shopCard
-    }
-  
-  }
-  
-// const mapDispatchToProps = {
-//     getShopCard
-// };
 
+    return {
+
+      shopCard: state.shopCard
+
+    };
+  
+}
+  
 export default connect(mapStateToProps, null)(ShopCard);

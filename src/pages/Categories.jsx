@@ -9,8 +9,8 @@ const Categories = (props) => {
     const id = [categoryId]
 
     useEffect(() => {
+
         props.getCategory(categoryId);
-        console.log(props)
 
     }, id);
 
@@ -23,7 +23,11 @@ const Categories = (props) => {
                 <Flex direction="row" height="100%" wrap="wrap" width="100%">
 
                     {props.category.children.map(child => {
-                        return <Flex key={child.categoryId} width="20%"> <CategoryChild subCategory = {child}/> </Flex>
+                        return( <Flex key={child.categoryId} width="20%"> 
+
+                                    <CategoryChild subCategory = {child}/> 
+                                    
+                                </Flex>);
                     })}
                 
                 </Flex>
@@ -39,13 +43,18 @@ const Categories = (props) => {
 };
 
 const mapStateToProps = state => {
+
     return {
+
         category: state.category
+
     };
 };
 
 const mapDispatchToProps = {
+
     getCategory,
+    
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Categories);

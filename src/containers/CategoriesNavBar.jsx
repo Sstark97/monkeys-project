@@ -14,10 +14,6 @@ const CategoriesNavBar = props => {
     const data = useAxios('categories').response;
     props.setCategories(data)
 
-    useEffect(() => {
-        props.setCategories(data)
-    },[])
-
     return (
 
             <Wrap display= "flex" direction="row" height="30%" spacing="10" width="100%" justifyContent="center" alignItems="center" >
