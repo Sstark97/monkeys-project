@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setCategories } from '../actions';
-import '../assets/styles/categories.css';
+import '../assets/styles/categories.scss';
 import useAxios from '../hooks/useAxios';
 import { 
     Text, 

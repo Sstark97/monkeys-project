@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SearchIcon } from '@chakra-ui/icons'
 import Logo  from '../assets/static/logo.png';
+import '../assets/styles/Search.scss';
 import { 
     Flex, 
     Image, 
@@ -8,18 +9,39 @@ import {
     IconButton
 } from '@chakra-ui/react';
 
-const ShopHeader = () => (
-    <Flex flexDirection="row" width="100%" my="4rem">
+const ShopHeader = () => {
 
-        <Image src={Logo} marginRight="4rem" marginLeft="4rem"/>
-        <Flex flexDirection="row" width="70%" alignSelf="center">
+    const [focusOnInput, setFocusOnInput] = useState(false);
 
-            <IconButton aria-label="Search database" icon={<SearchIcon />} size="xs"/>
-            <Input placeholder="" size="xs" alignSelf="flex-end" />
+    const handleFocusOnInput = () => {
+        setFocusOnInput(true);
+    }
 
+    const handleFocusOutOfInput = () => {
+        setFocusOnInput(false);
+    }
+
+    
+    return (
+        <Flex flexDirection="row" width="100%" my="1rem" justifyContent="center" alignItems="center">
+
+            <Image src={Logo} marginRight="4rem" marginLeft="4rem" width="44px"/>
+            <Flex flexDirection="row" width="70%" alignItems="center" justifyContent="center">
+
+                {/* <IconButton aria-label="Search database" icon={<SearchIcon />} size="xs" height="30px"/> */}
+                <Input 
+                className="inputstyle" 
+                placeholder={focusOnInput ? "¿Estas buscando algo...?" : ""} 
+                alignSelf="center" 
+                onFocus={handleFocusOnInput}
+                onBlur={handleFocusOutOfInput}
+                />
+
+            </Flex>
+            
         </Flex>
-        
-    </Flex>
-);
+    );
+
+}
 
 export default ShopHeader;

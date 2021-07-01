@@ -56,9 +56,11 @@ src/
 |   |   |
 |   |   |-- rebajas.png
 |   |-- styles/
-|   |   |-- categories.css
+|   |   |-- categories.scss
 |   |   |
-|   |   |-- index.css
+|   |   |-- index.scss
+|   |   |
+|   |   |-- Search.scss
 |-- components/
 |   |-- CategoryChild.jsx
 |   |   |
