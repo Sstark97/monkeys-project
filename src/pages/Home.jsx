@@ -1,17 +1,20 @@
 import React from 'react';
 import useAxios from '../hooks/useAxios';
-import { Box, Text} from '@chakra-ui/react';
+import { Flex, Text} from '@chakra-ui/react';
+import ShopCarousel from '../containers/ShopCarousel';
+import StatsContainer from '../containers/StatsContainer';
 
 const Home = () => {
     const data = useAxios('categories').response;
 
 
     return (
-        <Box width="70%" height="100%">
+        <Flex width="100%" height="100%" direction="column" justifyContent="center" alignItems="center" >
 
-            <Text>Esto es el home</Text>
+            <ShopCarousel />
+            <StatsContainer />
             
-        </Box>
+        </Flex>
     );
 }
 
