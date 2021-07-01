@@ -98,7 +98,10 @@ src/
 |   |-- Categories.jsx
 |   |   |
 |   |   |
-|   |-- Home.jsx   
+|   |-- Home.jsx
+|   |   |
+|   |   |
+|   |-- Product.jsx   
 |   |   |
 |   |   |
 |   |-- Products.jsx
