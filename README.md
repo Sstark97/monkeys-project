@@ -48,9 +48,13 @@ src/
 |   |-- index.js
 |-- assets/
 |   |-- static/
+|   |   |-- cremas.png
+|   |   |
 |   |   |-- logo.png
 |   |   |
 |   |   |-- notFound.png
+|   |   |
+|   |   |-- rebajas.png
 |   |-- styles/
 |   |   |-- categories.css
 |   |   |
@@ -65,18 +69,27 @@ src/
 |   |-- ShopCard.jsx
 |   |   |
 |   |   |
+|   |-- StatsCard.jsx
+|   |   |
+|   |   |
 |   |-- SubCategories.jsx
 |-- containers/
 |   |-- CategoriesNavBar.jsx
 |   |   |
 |   |   |
+|   |-- Footer.jsx
+|   |   |
+|   |   |
 |   |-- Layout.jsx
+|   |   |
+|   |   |
+|   |-- ShopCarousel.jsx
 |   |   |
 |   |   |
 |   |-- ShopHeader.jsx
 |   |   |
 |   |   |
-|   |-- Footer.jsx
+|   |-- StatsContainer.jsx
 |-- hooks/
 |   |-- useAxios.js
 |-- pages/
