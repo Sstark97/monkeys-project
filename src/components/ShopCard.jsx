@@ -51,6 +51,7 @@ const ShopCard = (props) => {
             placement="right"
             onClose={handleCloseDrawInChild}
             finalFocusRef={props.btnRef}
+            key={1}
             >
             <DrawerOverlay />
             <DrawerContent>

@@ -14,7 +14,10 @@ const Products = (props) => {
     useEffect( () => {
 
         getData();
-        props.setIntoShopCard({});
+        if(props.shopCard === undefined){
+            props.setIntoShopCard({});
+
+        }
 
     }, []);
 

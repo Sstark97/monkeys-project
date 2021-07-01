@@ -37,6 +37,7 @@ const ProductChild = (props) => {
   },[])
 
   const handleOpenDrawInChild = (productId) => {
+    console.log('Hola')
 
     const producRepeat = props.shopCard.find(product => product.productId === productId)
 

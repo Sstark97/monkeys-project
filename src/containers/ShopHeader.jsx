@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Logo  from '../assets/static/logo.png';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setSearchProduct } from '../actions';
+import { setSearchProduct, setIntoShopCard } from '../actions';
 import '../assets/styles/Search.scss';
 import axios from 'axios';
 
@@ -49,7 +49,12 @@ const ShopHeader = ( props ) => {
 
     const handleSetSearchProduct = product => {
 
-        props.setSearchProduct(product)
+        props.setSearchProduct(product);
+
+        if(props.shopCard === undefined){
+            props.setIntoShopCard({});
+        }
+        
         setSearchValue('');
 
     }
@@ -119,7 +124,18 @@ const ShopHeader = ( props ) => {
 const mapDispatchToProps = {
 
     setSearchProduct,
+    setIntoShopCard
 }
+
+// const mapStateToProps = state => {
+
+//     return {
+
+//         shopCard: state.shopCard
+
+//     };
+
+// };
 
 export default connect(null,mapDispatchToProps)(ShopHeader);
 

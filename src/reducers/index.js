@@ -24,8 +24,7 @@ const reducer = (state, action) => {
         case 'GET_PRODUCT':
             return {
                 ...state,
-                product: state.products.find(item => item.id === Number(action.payload)) 
-                || []
+                product: state.products !== undefined ? state.products.find(item => item.id === Number(action.payload)) : {}
             };
         case 'SET_INTO_SHOP_CARD':
             return {
