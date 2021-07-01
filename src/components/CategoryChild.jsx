@@ -13,7 +13,7 @@ const CategoryChild = ({ subCategory }) => {
 
           <WrapItem className="category" key={subCategory.categoryId}  height="100%">
                               
-              <Link to={'/product/' + subCategory.categoryId}>
+              <Link to={'/products/' + subCategory.categoryId}>
 
                   <Text fontWeight="light" fontSize="xl" >{subCategory.name}</Text>
 

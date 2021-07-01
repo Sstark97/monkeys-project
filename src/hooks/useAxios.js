@@ -8,22 +8,21 @@ const useAxios = (endPoint) => {
     const [error, setError] = useState('');
     const [loading, setloading] = useState(true);
 
-    const fetchData = ()=> {
-        axios
-            .get(endPoint)
-            .then((res) => {
-                setResponse(res.data);
-            })
-            .catch((err) => {
-                setError(err);
-            })
-            .finally(() => {
-                setloading(false);
-            });
+    const fetchData = async ()=> {
+
+        try{
+            const resp = await axios.get(endPoint);
+            setResponse(resp.data);
+        } catch (err) {
+            setError(err);
+        } finally {
+            setloading(false);
+        }
+        
     };
 
-    useEffect(() => {
-        fetchData();
+    useEffect( async () => {
+        await fetchData();
     }, []);
 
     // custom hook returns value

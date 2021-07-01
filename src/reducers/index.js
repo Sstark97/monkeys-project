@@ -41,6 +41,11 @@ const reducer = (state, action) => {
                 ...state,
                 shopProduct: state.shopCard.find(item => item.productId === action.payload) !== undefined ? state.shopCard.find(item => item.productId === action.payload) : {}
             };
+        case 'SET_SEARCH_PRODUCT':
+            return {
+                ...state,
+                searchProduct: action.payload
+            }
             
     }
 

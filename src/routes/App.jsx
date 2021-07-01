@@ -13,7 +13,8 @@ const App = () => (
                     <Switch>
                         <Route exact path = "/" component={Home}/> 
                         <Route exact path = "/category/:categoryId" component={Categories}/>
-                        <Route exact path = "/product/:categoryId" component={Products}/> 
+                        <Route exact path = "/products/:categoryId" component={Products}/>
+                        <Route exact path = "/product/:productId" component={Products}/>
                     </Switch>
                 </Layout>
             </BrowserRouter>

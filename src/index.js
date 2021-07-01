@@ -11,7 +11,8 @@ const initialState = {
     "products": [],
     "product":{},
     "shopCard": [],
-    "shopProduct": {}
+    "shopProduct": {},
+    "searchProduct": {},
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

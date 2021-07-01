@@ -37,3 +37,8 @@ export const getOnlyOneToShopCard = payload => ({
     type: 'GET_ONLY_ONE_TO_SHOP_CARD',
     payload,
 });
+
+export const setSearchProduct = payload => ({
+    type: 'SET_SEARCH_PRODUCT',
+    payload,
+});

@@ -3,7 +3,6 @@ import { getProducts, setProducts, setIntoShopCard} from '../actions';
 import { connect } from 'react-redux';
 import ProductChild from '../components/ProductChild';
 import { Flex } from "@chakra-ui/react";
-import useAxios from '../hooks/useAxios';
 import axios from 'axios';
 import ShopCard from '../components/ShopCard';
 
@@ -12,20 +11,19 @@ const Products = (props) => {
     const btnRef = useRef();
     const [drawShow,setDrawShow] = useState(false);
 
-    useEffect(() => {
+    useEffect( () => {
 
         getData();
         props.setIntoShopCard({});
 
     }, []);
 
-    const { categoryId } = props.match.params;
-    let data;
-
     const getData = async () => {
+
+        const { categoryId } = props.match.params;
         const resp = await axios.get(`https://private-anon-180d22d3a2-gocco.apiary-mock.com/stores/2/products/search?categoryId=${categoryId}`);
-        data = resp.data.results;
-        props.setProducts(data);
+        props.setProducts(resp.data.results);
+
     }
 
     const handleOpenDraw = () => {
