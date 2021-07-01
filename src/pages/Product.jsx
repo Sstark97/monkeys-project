@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProductChild from '../components/ProductChild';
 import { connect } from 'react-redux';
 import { getSearchProduct } from '../actions';
 
 const Product = props => {
 
+    useEffect(() => {
+
+        props.getSearchProduct();
+
+    },[]);
+
+    return ( <ProductChild product={props.searchProduct}/>)
+
+}
+
+const mapDispatchToProps = {
+
+    getSearchProduct,
 }
 
 const mapStateToProps = state => {
@@ -13,4 +26,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,null)(Product);
+export default connect(mapStateToProps,mapDispatchToProps)(Product);

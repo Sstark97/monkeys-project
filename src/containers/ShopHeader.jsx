@@ -85,7 +85,7 @@ const ShopHeader = ( props ) => {
 
                                     return (<Flex key={child.modelId} width="20%" maxHeight="fit-content"> 
 
-                                                <Link to={'/products/' + child.modelId} onClick={() => {handleSetSearchProduct(child)}}>
+                                                <Link to={'/product/' + child.modelId} onClick={() => {handleSetSearchProduct(child)}}>
 
                                                     <Text>{child.name}</Text>
 

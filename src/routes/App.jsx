@@ -4,6 +4,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Home from '../pages/Home';
 import Categories from '../pages/Categories';
 import Products from '../pages/Products';
+import Product from '../pages/Product';
 import Layout from '../containers/Layout';
 
 const App = () => (
@@ -14,7 +15,7 @@ const App = () => (
                         <Route exact path = "/" component={Home}/> 
                         <Route exact path = "/category/:categoryId" component={Categories}/>
                         <Route exact path = "/products/:categoryId" component={Products}/>
-                        <Route exact path = "/product/:productId" component={Products}/>
+                        <Route exact path = "/product/:productId" component={Product}/>
                     </Switch>
                 </Layout>
             </BrowserRouter>

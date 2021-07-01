@@ -48,7 +48,7 @@ const reducer = (state, action) => {
             }
         case 'GET_SEARCH_PRODUCT':
             return {
-                ...state.searchProduct
+                ...state,
             };
             
     }
