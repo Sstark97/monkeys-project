@@ -42,3 +42,8 @@ export const setSearchProduct = payload => ({
     type: 'SET_SEARCH_PRODUCT',
     payload,
 });
+
+export const getSearchProduct = payload => ({
+    type: 'GET_SEARCH_PRODUCT',
+    payload,
+});

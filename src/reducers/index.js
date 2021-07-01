@@ -46,6 +46,10 @@ const reducer = (state, action) => {
                 ...state,
                 searchProduct: action.payload
             }
+        case 'GET_SEARCH_PRODUCT':
+            return {
+                ...state.searchProduct
+            };
             
     }
 
