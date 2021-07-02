@@ -39,8 +39,11 @@ const Product = props => {
 }
 
 const mapStateToProps = state => {
+
     return {
-        searchProduct: state.searchProduct
+
+        searchProduct: state.searchProduct,
+
     }
 }
 
@@ -50,4 +53,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Product);
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

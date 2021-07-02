@@ -22,7 +22,6 @@ const ProductChild = (props) => {
   const [image, setImage] = useState(props.product.images[0]);
   const [currentSize, setCurrentSize] = useState('');
   const [loading, setLoading] = useState(true);
-  const [showAlert, setShowAlert] = useState(false);
   const counter = useRef(0);
 
   useEffect(() => {
@@ -182,15 +181,20 @@ const ProductChild = (props) => {
 }
 
 const mapStateToProps = state => {
+
   return {
-    shopCard: state.shopCard
-  }
+
+    shopCard: state.shopCard,
+
+  };
 
 }
 
 const mapDispatchToProps = {
+
   getProduct,
   setIntoShopCard
+
 };
   
-export default connect(mapStateToProps,mapDispatchToProps)(ProductChild);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductChild);

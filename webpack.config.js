@@ -63,7 +63,7 @@ module.exports = {
       filename: './index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/[name].css'
+      filename: 'assets/[name].css' || './public/index.css'
     }),
   ]
 };

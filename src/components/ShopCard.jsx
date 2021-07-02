@@ -92,21 +92,31 @@ const ShopCard = (props) => {
                             ?
                             <>
                                 {props.shopCard.map(product => {
+
                                     if(product !== undefined){
+
                                         return(
+
                                             <ListItem key={ product.productId }>
+
                                                 <Text as="h2" fontWeight="bold"> {product.name}</Text>
                                                 <Text>{`Color ${product.color}, talla ${product.size}`}</Text>
                                                 <Text>{product.price}€</Text>
                                                 <Text cursor="pointer" onClick={() => {handleRemoveFromShopCard(product.productId)}}> Eliminar del Carrito...</Text>
                                                 <NumberInput defaultValue={1} min={1} max={20} value={product.amount} onChange={(event) => {handleAmountChange(event,product.productId)}} >
+                                                    
                                                     <NumberInputField />
                                                     <NumberInputStepper>
+
                                                         <NumberIncrementStepper />
                                                         <NumberDecrementStepper />
+
                                                     </NumberInputStepper>
+
                                                 </NumberInput>
+
                                             </ListItem>
+
                                         )
                                     }
                                 })}
@@ -128,9 +138,13 @@ const ShopCard = (props) => {
                 </DrawerBody>
 
                 <DrawerFooter display="flex" justifyContent="center">
+                    
                     <Button colorScheme="blue">Finalizar Compra</Button>
+
                 </DrawerFooter>
+
             </DrawerContent>
+            
             </Drawer>  
         
         </>

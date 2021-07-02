@@ -26,11 +26,15 @@ const StatsCard = props => {
           <Box pl={{ base: 2, md: 4 }}>
             
             <StatLabel fontWeight={'medium'} isTruncated>
+
               {title}
+
             </StatLabel>
 
             <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
+
               {stat}
+              
             </StatNumber>
             
           </Box>

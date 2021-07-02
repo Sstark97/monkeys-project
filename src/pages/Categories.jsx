@@ -59,4 +59,4 @@ const mapDispatchToProps = {
     
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Categories);
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

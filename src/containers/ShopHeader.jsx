@@ -28,10 +28,12 @@ const ShopHeader = ( props ) => {
     },[products,searchValue])
 
     const handleFocusOnInput = () => {
+
         setFocusOnInput(true);
     }
 
     const handleFocusOutOfInput = () => {
+
         setFocusOnInput(false);
     }
 
@@ -41,10 +43,14 @@ const ShopHeader = ( props ) => {
         setSearchValue(productToSearch);
 
         if(productToSearch !== ''){
+
             const resp = await axios.get(`https://private-anon-180d22d3a2-gocco.apiary-mock.com/stores/2/products/search?with_text=${searchValue}`)
             setProducts(resp.data.results);
+            
         } else {
+
             setProducts([]);
+
         }
 
     }
@@ -136,16 +142,6 @@ const mapDispatchToProps = {
     setSearchProduct,
     setIntoShopCard
 }
-
-// const mapStateToProps = state => {
-
-//     return {
-
-//         shopCard: state.shopCard
-
-//     };
-
-// };
 
 export default connect(null,mapDispatchToProps)(ShopHeader);
 

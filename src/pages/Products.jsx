@@ -51,8 +51,10 @@ const Products = (props) => {
 
                 {props.products.map(child => {
 
-                    return (<Flex key={child.modelId} width="20%" maxHeight="fit-content"> 
-                                            <ProductChild product = {child} btnRef={btnRef} handleOpenDraw={handleOpenDraw} /> 
+                    return (<Flex key={child.modelId} width="20%" maxHeight="fit-content">
+
+                                <ProductChild product = {child} btnRef={btnRef} handleOpenDraw={handleOpenDraw} /> 
+
                             </Flex>);
                 })}
             
