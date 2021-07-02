@@ -38,6 +38,11 @@ export const getOnlyOneToShopCard = payload => ({
     payload,
 });
 
+export const removeOneFromShopCard = payload => ({
+    type: 'REMOVE_ONE_FROM_SHOP_CARD',
+    payload,
+});
+
 export const setSearchProduct = payload => ({
     type: 'SET_SEARCH_PRODUCT',
     payload,

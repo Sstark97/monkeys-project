@@ -35,6 +35,11 @@ const reducer = (state, action) => {
             return [
                 ...state.shopCard
             ];
+        case 'REMOVE_ONE_FROM_SHOP_CARD':
+            return {
+                ...state,
+                shopCard: state.shopCard.filter(product => product.productId !== action.payload)
+            }
         case 'GET_ONLY_ONE_TO_SHOP_CARD':
             return {
                 ...state,

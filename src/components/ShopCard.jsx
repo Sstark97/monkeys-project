@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getOnlyOneToShopCard } from '../actions';
+import { getOnlyOneToShopCard, removeOneFromShopCard } from '../actions';
 import {
     Icon,
     Drawer,
@@ -39,7 +39,11 @@ const ShopCard = (props) => {
     }
 
     const handleGetProduct = productId => {
-        props.getOnlyOneToShopCard(productId)
+        props.getOnlyOneToShopCard(productId);
+    }
+
+    const handleRemoveFromShopCard = productId => {
+        props.removeOneFromShopCard(productId);
     }
 
     return (
@@ -70,6 +74,7 @@ const ShopCard = (props) => {
                                                 <Text as="h2" fontWeight="bold"> {product.name}</Text>
                                                 <Text>{`Color ${product.color}, talla ${product.size}`}</Text>
                                                 <Text>{product.price}€</Text>
+                                                <Text cursor="pointer" onClick={() => {handleRemoveFromShopCard(product.productId)}}> Eliminar del Carrito...</Text>
                                                 <NumberInput defaultValue={1} min={1} max={20} onChange={(event) => {handleAmountChange(event,product.productId)}} >
                                                     <NumberInputField />
                                                     <NumberInputStepper>
@@ -121,6 +126,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     getOnlyOneToShopCard,
+    removeOneFromShopCard
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(ShopCard);
