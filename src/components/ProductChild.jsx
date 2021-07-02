@@ -23,7 +23,6 @@ const ProductChild = (props) => {
   const [currentSize, setCurrentSize] = useState('');
   const [loading, setLoading] = useState(true);
   const counter = useRef(0);
-  // const selectSizeRef = useRef();
 
   useEffect(() => {
 
@@ -66,27 +65,10 @@ const ProductChild = (props) => {
         amount: 1
       }
 
-      handleSetFinalPrice(productFormated)
+      props.setIntoShopCard(productFormated);
     }
 
     props.handleOpenDraw();
-  }
-
-  const handleSetFinalPrice = (productFormated) => {
-
-    if(props.shopCard[0] !== undefined){
-
-      const shopTotal = Number(props.shopCard[props.shopCard.length - 1].total);
-      productFormated.total = shopTotal + Number(productFormated.price);
-      props.setIntoShopCard(productFormated);
-
-    } else {
-
-      productFormated.total = parseFloat(productFormated.price).toFixed(2);
-      props.setIntoShopCard(productFormated);
-
-    }
-
   }
 
   const handleSizeChange = event => {

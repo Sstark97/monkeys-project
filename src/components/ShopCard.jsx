@@ -39,11 +39,15 @@ const ShopCard = (props) => {
     }
 
     const handleGetProduct = productId => {
+
         props.getOnlyOneToShopCard(productId);
+        
     }
 
     const handleRemoveFromShopCard = productId => {
+
         props.removeOneFromShopCard(productId);
+
     }
 
     return (
@@ -88,7 +92,8 @@ const ShopCard = (props) => {
                                 })}
                                 <Text display="flex" alignSelf="flex-end">Final Price: {props.shopCard[0] !== undefined
                                     ?  
-                                        props.shopCard[props.shopCard.length - 1].total
+                                        props.shopCard.reduce((acc,current) => acc + Number(current.price),0)
+
                                     : 0}€
                                 </Text>
                             
