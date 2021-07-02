@@ -1,4 +1,5 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
+import { useHistory } from 'react-router';
 import Logo  from '../assets/static/logo.png';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -18,6 +19,7 @@ const ShopHeader = ( props ) => {
     const [focusOnInput, setFocusOnInput] = useState(false);
     const [searchValue, setSearchValue] = useState("");
     const [products, setProducts] = useState([]);
+    let history = useHistory();
 
     const filteredProducts = useMemo(() => {
 
@@ -62,7 +64,15 @@ const ShopHeader = ( props ) => {
     return (
         <Flex flexDirection="row" width="100%" my="1rem" justifyContent="center" alignItems="center">
 
-            <Image src={Logo} marginRight="4rem" marginLeft="4rem" width="44px"/>
+            <Image
+            className="logo"
+            src={Logo}
+            alt="Logo"
+            marginRight="4rem" 
+            marginLeft="4rem" 
+            width="44px" 
+            onClick={() => {history.push('/')}}/>
+
             <Flex flexDirection="column" width="70%" alignItems="center" justifyContent="center">
 
                 <Input 
