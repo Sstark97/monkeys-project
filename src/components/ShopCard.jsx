@@ -32,12 +32,10 @@ const ShopCard = (props) => {
 
     const handleAmountChange = (event, productId) => {
         
-        console.log(event);
-        console.log(productId);
-        console.log(props.shopProduct)
+
         handleGetProduct(productId);
         //props.shopProduct.amount = parseInt(event) ;
-        console.log(props.shopProduct);
+
     }
 
     const handleGetProduct = productId => {
@@ -66,20 +64,22 @@ const ShopCard = (props) => {
                             ?
                             <>
                                 {props.shopCard.map(product => {
-                                    return(
-                                        <ListItem key={ product.productId }>
-                                            <Text as="h2" fontWeight="bold"> {product.name}</Text>
-                                            <Text>{`Color ${product.color}, talla ${product.size}`}</Text>
-                                            <Text>{product.price}€</Text>
-                                            <NumberInput defaultValue={1} min={1} max={20} onChange={(event) => {handleAmountChange(event,product.productId)}} >
-                                                <NumberInputField />
-                                                <NumberInputStepper>
-                                                    <NumberIncrementStepper />
-                                                    <NumberDecrementStepper />
-                                                </NumberInputStepper>
-                                            </NumberInput>
-                                        </ListItem>
-                                    )
+                                    if(product !== undefined){
+                                        return(
+                                            <ListItem key={ product.productId }>
+                                                <Text as="h2" fontWeight="bold"> {product.name}</Text>
+                                                <Text>{`Color ${product.color}, talla ${product.size}`}</Text>
+                                                <Text>{product.price}€</Text>
+                                                <NumberInput defaultValue={1} min={1} max={20} onChange={(event) => {handleAmountChange(event,product.productId)}} >
+                                                    <NumberInputField />
+                                                    <NumberInputStepper>
+                                                        <NumberIncrementStepper />
+                                                        <NumberDecrementStepper />
+                                                    </NumberInputStepper>
+                                                </NumberInput>
+                                            </ListItem>
+                                        )
+                                    }
                                 })}
                                 <Text display="flex" alignSelf="flex-end">Final Price: {props.shopCard[0] !== undefined
                                     ?  

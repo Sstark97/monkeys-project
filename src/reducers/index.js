@@ -38,7 +38,9 @@ const reducer = (state, action) => {
         case 'GET_ONLY_ONE_TO_SHOP_CARD':
             return {
                 ...state,
-                shopProduct: state.shopCard.find(item => item.productId === action.payload) !== undefined ? state.shopCard.find(item => item.productId === action.payload) : {}
+                shopProduct: state.shopCard.find(item => item.productId === action.payload) !== undefined 
+                    ? state.shopCard.find(item => item.productId === action.payload) 
+                    : {}
             };
         case 'SET_SEARCH_PRODUCT':
             return {

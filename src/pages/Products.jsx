@@ -15,6 +15,7 @@ const Products = (props) => {
 
         getData();
         if(props.shopCard === undefined){
+            
             props.setIntoShopCard({});
 
         }

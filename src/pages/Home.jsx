@@ -1,6 +1,6 @@
 import React from 'react';
 import useAxios from '../hooks/useAxios';
-import { Flex, Text} from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import ShopCarousel from '../containers/ShopCarousel';
 import StatsContainer from '../containers/StatsContainer';
 

@@ -36,7 +36,9 @@ const Categories = (props) => {
         );
 
     } else {
+
         return <></>;
+        
     }
 
 

@@ -37,7 +37,6 @@ const ProductChild = (props) => {
   },[])
 
   const handleOpenDrawInChild = (productId) => {
-    console.log('Hola')
 
     const producRepeat = props.shopCard.find(product => product.productId === productId)
 
@@ -46,7 +45,6 @@ const ProductChild = (props) => {
       props.getProduct(productId);
       let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
       setPrice(parseFloat(priceString).toFixed(2));
-      console.log(currentSize);
 
       let productFormated = {
         productId: props.product.modelId,
@@ -81,10 +79,11 @@ const ProductChild = (props) => {
   }
 
   const handleSizeChange = event => {
+
     event.preventDefault();
     let size = event.target.value;
-    console.log(size);
     setCurrentSize(size);
+    
   }
 
     return (

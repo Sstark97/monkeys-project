@@ -14,6 +14,7 @@ const Layout = ({children}) => (
             <CategoriesNavBar />
 
         </Flex>
+        
         <Box my="3rem" width="100%" >{children}</Box>
         <Box marginTop="96" width="100%" height="20%"><Footer /></Box>
 
