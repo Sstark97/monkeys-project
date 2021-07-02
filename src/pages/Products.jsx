@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState } from 'react';
 import { getProducts, setProducts, setIntoShopCard} from '../actions';
 import { connect } from 'react-redux';
 import ProductChild from '../components/ProductChild';
-import { Flex } from "@chakra-ui/react";
+import { Flex, Spinner } from "@chakra-ui/react";
 import axios from 'axios';
 import ShopCard from '../components/ShopCard';
 
@@ -15,7 +15,7 @@ const Products = (props) => {
 
         getData();
         if(props.shopCard === undefined){
-            
+
             props.setIntoShopCard({});
 
         }
@@ -27,6 +27,7 @@ const Products = (props) => {
         const { categoryId } = props.match.params;
         const resp = await axios.get(`https://private-anon-180d22d3a2-gocco.apiary-mock.com/stores/2/products/search?categoryId=${categoryId}`);
         props.setProducts(resp.data.results);
+
 
     }
 
@@ -51,17 +52,27 @@ const Products = (props) => {
                 {props.products.map(child => {
 
                     return (<Flex key={child.modelId} width="20%" maxHeight="fit-content"> 
-                                <ProductChild product = {child} btnRef={btnRef} handleOpenDraw={handleOpenDraw} /> 
-                           </Flex>);
-                })};
-
-                <ShopCard btnRef={btnRef} drawShow={drawShow} handleCloseDraw={handleCloseDraw}/>
+                                            <ProductChild product = {child} btnRef={btnRef} handleOpenDraw={handleOpenDraw} /> 
+                            </Flex>);
+                })}
             
+                <ShopCard btnRef={btnRef} drawShow={drawShow} handleCloseDraw={handleCloseDraw}/>
+
             </Flex>
         );
 
     } else {
-        return <></>;
+        return(
+            <Flex direction="row" height="80%" wrap="wrap" width="100%" justifyContent="center" alignItems="center">                     
+                <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="xl"
+                />
+            </Flex>  
+        )
     }
 }
 

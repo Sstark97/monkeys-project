@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState, useEffect, useRef } from 'react';
 import notFound from '../assets/static/notFound.png';
 import { getProduct, setIntoShopCard } from '../actions';
 import { connect } from 'react-redux';
@@ -12,7 +12,8 @@ import {
     Text,
     Button,
     Icon,
-    Select
+    Select,
+    Spinner
 } from '@chakra-ui/react';
 
 const ProductChild = (props) => {
@@ -20,14 +21,9 @@ const ProductChild = (props) => {
   const [price,setPrice] = useState([]);
   const [image, setImage] = useState(props.product.images[0]);
   const [currentSize, setCurrentSize] = useState('');
+  const [loading, setLoading] = useState(true);
+  const counter = useRef(0);
   // const selectSizeRef = useRef();
-
-  const handleImageNotFound = (event) => {
-
-    event.target.src = notFound;
-    setImage(event.target.src);
-
-  }
 
   useEffect(() => {
 
@@ -35,6 +31,21 @@ const ProductChild = (props) => {
     setPrice(parseFloat(priceString).toFixed(2));
 
   },[])
+
+  const handleImageNotFound = (event) => {
+    
+    event.target.src = notFound;
+    setImage(event.target.src);
+
+  }
+
+  const handleImageLoaded = () => {
+    counter.current += 1;
+    if (counter.current === 1) {
+      setLoading(false);
+    }
+  }
+
 
   const handleOpenDrawInChild = (productId) => {
 
@@ -83,7 +94,7 @@ const ProductChild = (props) => {
     event.preventDefault();
     let size = event.target.value;
     setCurrentSize(size);
-    
+
   }
 
     return (
@@ -98,10 +109,24 @@ const ProductChild = (props) => {
           shadow="lg"
           position="relative">
 
+          <Flex direction="row" height="80%" wrap="wrap" width="100%" justifyContent="center" alignItems="center" display={loading ? "flex" : "none"}> 
+
+              <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+              />
+
+          </Flex>  
+
           <Image
             src={image}
             alt={`Picture of ${props.product.name}`}
             roundedTop="lg"
+            display={!loading ? "flex" : "none"}
+            onLoad={handleImageLoaded}
             onError={handleImageNotFound}
           />
   
