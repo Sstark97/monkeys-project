@@ -49,13 +49,6 @@ const ProductChild = (props) => {
 
   const handleOpenDrawInChild = (productId) => {
 
-    if(currentSize === ''){
-      setShowAlert(true);
-      return;
-    } else {
-      setShowAlert(false);
-    }
-
     const producRepeat = props.shopCard.find(product => product.productId === productId)
 
     if(!producRepeat){
