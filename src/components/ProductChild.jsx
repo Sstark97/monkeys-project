@@ -22,12 +22,14 @@ const ProductChild = (props) => {
   const [image, setImage] = useState(props.product.images[0]);
   const [currentSize, setCurrentSize] = useState('');
   const [loading, setLoading] = useState(true);
+  const [showAlert, setShowAlert] = useState(false);
   const counter = useRef(0);
 
   useEffect(() => {
 
     let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
     setPrice(parseFloat(priceString).toFixed(2));
+    setCurrentSize(`${props.product.sizes[0].name} meses`);
 
   },[])
 
@@ -47,6 +49,13 @@ const ProductChild = (props) => {
 
 
   const handleOpenDrawInChild = (productId) => {
+
+    if(currentSize === ''){
+      setShowAlert(true);
+      return;
+    } else {
+      setShowAlert(false);
+    }
 
     const producRepeat = props.shopCard.find(product => product.productId === productId)
 
@@ -75,6 +84,7 @@ const ProductChild = (props) => {
 
     event.preventDefault();
     let size = event.target.value;
+    console.log(size)
     setCurrentSize(size);
 
   }
@@ -156,13 +166,11 @@ const ProductChild = (props) => {
 
             </Flex>
 
-            <Select placeholder="Seleccione una talla" onChange={handleSizeChange}>
+            <Select  onChange={handleSizeChange}>
 
               {props.product.sizes.map(size => <option key={size.variantId} value={`${size.name} meses`}>{`${size.name} meses`}</option>)}
 
             </Select>
-
-
 
           </Box>
 
