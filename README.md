@@ -40,6 +40,20 @@ it wasn't worth it
 
 ----
 
+# Some Details to take acount
+
+- As the API images were broken I decided to put an image of a cone that I found on [KapWing](https://www.kapwing.com/404-illustrations)
+
+- As the API searcher filters were broken I decided to simulated a searcher with useMemo
+
+- As I can't use my customHook inside a function I used axios to fetch data in Products Page
+
+----
+
+## Live preview
+
+[Click here to see live preview](https://monkeys-test.netlify.app/)
+
 ### src Folder Structure
 
 ```
