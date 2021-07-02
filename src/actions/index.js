@@ -52,3 +52,8 @@ export const getSearchProduct = payload => ({
     type: 'GET_SEARCH_PRODUCT',
     payload,
 });
+
+export const updatedOneProduct = (productId, amount) => ({
+    type: 'UPDATED_ONE_PRODUCT',
+    payload: {productId, amount},
+});

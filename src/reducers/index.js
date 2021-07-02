@@ -40,6 +40,11 @@ const reducer = (state, action) => {
                 ...state,
                 shopCard: state.shopCard.filter(product => product.productId !== action.payload)
             }
+        case 'UPDATED_ONE_PRODUCT':
+            return {
+                ...state,
+                shopCard: updatedProduct(state.shopCard, action.payload.productId, action.payload.amount)
+            }
         case 'GET_ONLY_ONE_TO_SHOP_CARD':
             return {
                 ...state,
@@ -59,6 +64,14 @@ const reducer = (state, action) => {
             
     }
 
+}
+
+const updatedProduct = ( shopCard, productId, amount) => {
+
+    const productToUpdate = shopCard.find(product => product.productId === productId);
+    productToUpdate.amount = amount;
+
+    return shopCard;
 }
 
 export default reducer;

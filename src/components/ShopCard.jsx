@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { getOnlyOneToShopCard, removeOneFromShopCard } from '../actions';
+import { getOnlyOneToShopCard, removeOneFromShopCard, updatedOneProduct } from '../actions';
 import {
     Icon,
     Drawer,
@@ -23,10 +23,14 @@ import {
 
 const ShopCard = (props) => {
 
+    const [totalPrice, setTotalPrice] = useState(0.00);
+    const [first, setFirst] = useState(true);
+ 
     const handleCloseDrawInChild = () => {
 
         props.handleCloseDraw();
         props.getOnlyOneToShopCard('');
+        setTotalPrice(handleSetTotalPrice());
 
     }
 
@@ -34,14 +38,31 @@ const ShopCard = (props) => {
         
 
         handleGetProduct(productId);
-        //props.shopProduct.amount = parseInt(event) ;
+        console.log(event)
+        props.updatedOneProduct(productId, event);
+        setTotalPrice(handleSetTotalPrice());
 
     }
+
+    const handleSetTotalPrice = () => props.shopCard.reduce((acc,current) => acc + (Number(current.price) * Number(current.amount)),0);
+
+    const handleShowTotalPrice = () => {
+
+        console.log(props.shopCard)
+
+        if(first){
+            setTotalPrice(handleSetTotalPrice());
+            setFirst(false);
+        } 
+
+        return totalPrice;
+    }
+    
 
     const handleGetProduct = productId => {
 
         props.getOnlyOneToShopCard(productId);
-        
+
     }
 
     const handleRemoveFromShopCard = productId => {
@@ -91,8 +112,8 @@ const ShopCard = (props) => {
                                     }
                                 })}
                                 <Text display="flex" alignSelf="flex-end">Final Price: {props.shopCard[0] !== undefined
-                                    ?  
-                                        props.shopCard.reduce((acc,current) => acc + Number(current.price),0)
+                                    ?   
+                                        handleShowTotalPrice()
 
                                     : 0}€
                                 </Text>
@@ -130,8 +151,11 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
+
     getOnlyOneToShopCard,
-    removeOneFromShopCard
+    removeOneFromShopCard,
+    updatedOneProduct
+    
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(ShopCard);
