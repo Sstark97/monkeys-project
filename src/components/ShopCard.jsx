@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import { getOnlyOneToShopCard, removeOneFromShopCard, updatedOneProduct } from '../actions';
 import {
@@ -38,7 +38,6 @@ const ShopCard = (props) => {
         
 
         handleGetProduct(productId);
-        console.log(event)
         props.updatedOneProduct(productId, event);
         setTotalPrice(handleSetTotalPrice());
 
@@ -100,7 +99,7 @@ const ShopCard = (props) => {
                                                 <Text>{`Color ${product.color}, talla ${product.size}`}</Text>
                                                 <Text>{product.price}€</Text>
                                                 <Text cursor="pointer" onClick={() => {handleRemoveFromShopCard(product.productId)}}> Eliminar del Carrito...</Text>
-                                                <NumberInput defaultValue={1} min={1} max={20} onChange={(event) => {handleAmountChange(event,product.productId)}} >
+                                                <NumberInput defaultValue={1} min={1} max={20} value={product.amount} onChange={(event) => {handleAmountChange(event,product.productId)}} >
                                                     <NumberInputField />
                                                     <NumberInputStepper>
                                                         <NumberIncrementStepper />
