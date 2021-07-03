@@ -17,6 +17,6 @@ const SubCategories = ( {subCategories} ) => {
         </UnorderedList>
     );
 
-}
+};
 
 export default SubCategories;

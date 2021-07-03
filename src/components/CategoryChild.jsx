@@ -9,21 +9,21 @@ import {
 const CategoryChild = ({ subCategory }) => {
 
     return(
-        <Wrap display= "flex" direction="row" height="30%" spacing="10" width="100%" justifyContent="center" alignItems="center" >    
+        <Wrap display="flex" direction="row" height="30%" spacing="10" width="100%" justifyContent="center" alignItems="center">    
 
-          <WrapItem className="category" key={subCategory.categoryId}  height="100%">
+          <WrapItem className="category" key={subCategory.categoryId} height="100%">
                               
-              <Link to={'/products/' + subCategory.categoryId}>
+            <Link to={`/products/${subCategory.categoryId}`}>
 
-                  <Text fontWeight="light" fontSize="xl" >{subCategory.name}</Text>
+              <Text fontWeight="light" fontSize="xl">{subCategory.name}</Text>
 
-              </Link>
+            </Link>
                             
           </WrapItem>
 
-      </Wrap>
+        </Wrap>
     );
-}
+};
 
 
 

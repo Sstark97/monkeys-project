@@ -6,7 +6,7 @@ import { Text, Flex } from "@chakra-ui/react"
 
 const Categories = (props) => {
     const { categoryId } = props.match.params;
-    const id = [categoryId]
+    const id = [categoryId];
 
     useEffect(() => {
 

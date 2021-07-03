@@ -10,13 +10,13 @@ import {
     WrapItem,
 } from '@chakra-ui/react';
 
-const CategoriesNavBar = props => {
+const CategoriesNavBar = (props) => {
     const data = useAxios('categories').response;
-    props.setCategories(data)
+    props.setCategories(data);
 
     return (
 
-            <Wrap display= "flex" direction="row" height="30%" spacing="10" width="100%" justifyContent="center" alignItems="center" >
+            <Wrap display="flex" direction="row" height="30%" spacing="10" width="100%" justifyContent="center" alignItems="center" >
                 {
                     data.map(category =>
 
@@ -29,7 +29,7 @@ const CategoriesNavBar = props => {
                             </Link>
 
                         </WrapItem>
-                    ) 
+                    )
                     
                 }
             </Wrap>
@@ -38,7 +38,9 @@ const CategoriesNavBar = props => {
 }
 
 const mapDispatchToProps = {
-    setCategories
-}
 
-export default connect(null,mapDispatchToProps)(CategoriesNavBar);
+    setCategories
+
+};
+
+export default connect(null, mapDispatchToProps)(CategoriesNavBar);

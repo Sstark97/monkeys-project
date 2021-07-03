@@ -24,13 +24,13 @@ const Product = props => {
 
         setDrawShow(true);
 
-    }
+    };
     
     const handleCloseDraw = () => {
 
         setDrawShow(false);
 
-    }
+    };
 
     return ( 
 
@@ -39,17 +39,17 @@ const Product = props => {
             <ShopCard btnRef={btnRef} drawShow={drawShow} handleCloseDraw={handleCloseDraw}/>
         </>
         
-    )
+    );
 
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 
     return {
 
         searchProduct: state.searchProduct,
 
-    }
+    };
 }
 
 const mapDispatchToProps = {
@@ -57,6 +57,6 @@ const mapDispatchToProps = {
     getSearchProduct,
     setIntoShopCard
 
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

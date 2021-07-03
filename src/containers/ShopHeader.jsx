@@ -25,17 +25,17 @@ const ShopHeader = ( props ) => {
 
         return products.filter(product => product.name.toLowerCase().includes(searchValue.toLowerCase()));
 
-    },[products,searchValue])
+    },[products,searchValue]);
 
     const handleFocusOnInput = () => {
 
         setFocusOnInput(true);
-    }
+    };
 
     const handleFocusOutOfInput = () => {
 
         setFocusOnInput(false);
-    }
+    };
 
     const handleSearch = async event => {
         event.preventDefault();
@@ -54,9 +54,9 @@ const ShopHeader = ( props ) => {
 
         }
 
-    }
+    };
 
-    const handleSetSearchProduct = product => {
+    const handleSetSearchProduct = (product) => {
 
         props.setSearchProduct(product);
         setSearchValue('');
@@ -138,7 +138,7 @@ const mapDispatchToProps = {
     setSearchProduct,
     setIntoShopCard,
     setProducts
-}
+};
 
-export default connect(null,mapDispatchToProps)(ShopHeader);
+export default connect(null, mapDispatchToProps)(ShopHeader);
 

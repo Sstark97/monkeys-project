@@ -30,7 +30,7 @@ const ShopCard = (props) => {
         props.handleCloseDraw();
         setTotalPrice(handleSetTotalPrice());
 
-    }
+    };
 
     const handleAmountChange = (event, productId) => {
         
@@ -39,7 +39,7 @@ const ShopCard = (props) => {
         props.updatedOneProduct(productId, event);
         setTotalPrice(handleSetTotalPrice());
 
-    }
+    };
 
     const handleSetTotalPrice = () => props.shopCard.reduce((acc,current) => acc + (Number(current.price) * Number(current.amount)),0);
 
@@ -49,7 +49,7 @@ const ShopCard = (props) => {
 
     }
 
-    const handleRemoveFromShopCard = productId => {
+    const handleRemoveFromShopCard = (productId) => {
 
         props.removeOneFromShopCard(productId);
 
@@ -138,7 +138,7 @@ const ShopCard = (props) => {
     
         );
     } else {
-        return <></>
+        return <></>;
     }
 };
 
@@ -151,7 +151,7 @@ const mapStateToProps = state => {
 
     };
   
-}
+};
 
 const mapDispatchToProps = {
 
@@ -159,6 +159,6 @@ const mapDispatchToProps = {
     removeOneFromShopCard,
     updatedOneProduct
     
-}
+};
   
 export default connect(mapStateToProps, mapDispatchToProps)(ShopCard);

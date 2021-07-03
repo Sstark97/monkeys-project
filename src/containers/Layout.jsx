@@ -5,10 +5,10 @@ import CategoriesNavBar from './CategoriesNavBar';
 import Footer from './Footer';
 
 
-const Layout = ({children}) => (
+const Layout = ( {children} ) => (
     <>
 
-        <Flex height ="20%" direction="column" justifyContent="center"> 
+        <Flex height="20%" direction="column" justifyContent="center"> 
 
             <ShopHeader />
             <CategoriesNavBar />

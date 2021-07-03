@@ -30,7 +30,7 @@ const ProductChild = (props) => {
     setPrice(parseFloat(priceString).toFixed(2));
     setCurrentSize(`${props.product.sizes[0].name} meses`);
 
-  },[])
+  },[]);
 
   const handleImageNotFound = (event) => {
     
@@ -40,15 +40,19 @@ const ProductChild = (props) => {
   };
 
   const handleImageLoaded = () => {
+
     counter.current += 1;
+
     if (counter.current === 1) {
+
       setLoading(false);
+
     }
+
   };
 
 
   const handleOpenDrawInChild = (productId) => {
-
 
     props.getProduct(productId);
     const priceString = `${String(props.product.finalPrice).substring(0,2)}.${String(props.product.finalPrice).substring(2,4)}`;
@@ -62,7 +66,6 @@ const ProductChild = (props) => {
       size: currentSize,
       amount: 1
     };
-
 
     props.setIntoShopCard(productFormated);
     props.handleOpenDraw();

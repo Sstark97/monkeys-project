@@ -35,13 +35,13 @@ const Products = (props) => {
 
         setDrawShow(true);
 
-    }
+    };
     
     const handleCloseDraw = () => {
 
         setDrawShow(false);
 
-    }
+    };
 
 
     if(props.products !== undefined){
@@ -74,11 +74,11 @@ const Products = (props) => {
                 size="xl"
                 />
             </Flex>  
-        )
+        );
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 
     return {
 
@@ -97,4 +97,4 @@ const mapDispatchToProps = {
     
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Products);
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

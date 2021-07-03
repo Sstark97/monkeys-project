@@ -8,7 +8,7 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react';
 
-const StatsCard = props => {
+const StatsCard = (props) => {
 
     const { title, stat, icon } = props;
 
