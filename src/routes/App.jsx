@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ChakraProvider } from "@chakra-ui/react";
 import Home from '../pages/Home';
@@ -12,10 +12,10 @@ const App = () => (
             <BrowserRouter>
                 <Layout>
                     <Switch>
-                        <Route exact path = "/" component={Home}/> 
-                        <Route exact path = "/category/:categoryId" component={Categories}/>
-                        <Route exact path = "/products/:categoryId" component={Products}/>
-                        <Route exact path = "/product/:productId" component={Product}/>
+                        <Route exact path= "/" component={Home} /> 
+                        <Route exact path= "/category/:categoryId" component={Categories} />
+                        <Route exact path= "/products/:categoryId" component={Products} />
+                        <Route exact path= "/product/:productId" component={Product} />
                     </Switch>
                 </Layout>
             </BrowserRouter>

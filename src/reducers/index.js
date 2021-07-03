@@ -4,12 +4,12 @@ const reducer = (state, action) => {
         case 'SET_CATEGORIES':
             return {
                 ...state,
-                categories: action.payload
+                categories: action.payload,
             };
         case 'GET_CATEGORY':
             return {
                 ...state,
-                category: state.categories.find(category => category.categoryId === action.payload) || []
+                category: state.categories.find(category => category.categoryId === action.payload) || [],
             }
         case 'SET_PRODUCTS':
             return {
@@ -19,7 +19,7 @@ const reducer = (state, action) => {
         case 'GET_PRODUCTS':
             return {
                 ...state,
-                products: state.products || []
+                products: state.products || [],
             };
         case 'GET_PRODUCT':
             return {
@@ -29,33 +29,33 @@ const reducer = (state, action) => {
         case 'SET_INTO_SHOP_CARD':
             return {
                 ...state,
-                shopCard: state.shopCard !== undefined  ? [...state.shopCard, action.payload] : []
+                shopCard: state.shopCard !== undefined  ? [...state.shopCard, action.payload] : [],
             };
         case 'GET_SHOP_CARD':
             return [
-                ...state.shopCard
+                ...state.shopCard,
             ];
         case 'REMOVE_ONE_FROM_SHOP_CARD':
             return {
                 ...state,
-                shopCard: state.shopCard.filter(product => product.productId !== action.payload)
+                shopCard: state.shopCard.filter(product => product.productId !== action.payload),
             }
         case 'UPDATED_ONE_PRODUCT':
             return {
                 ...state,
-                shopCard: updatedProduct(state.shopCard, action.payload.productId, action.payload.amount)
+                shopCard: updatedProduct(state.shopCard, action.payload.productId, action.payload.amount),
             }
         case 'GET_ONLY_ONE_TO_SHOP_CARD':
             return {
                 ...state,
                 shopProduct: state.shopCard.find(item => item.productId === action.payload) !== undefined 
                     ? state.shopCard.find(item => item.productId === action.payload) 
-                    : {}
+                    : {},
             };
         case 'SET_SEARCH_PRODUCT':
             return {
                 ...state,
-                searchProduct: action.payload
+                searchProduct: action.payload,
             }
         case 'GET_SEARCH_PRODUCT':
             return {
@@ -66,7 +66,7 @@ const reducer = (state, action) => {
 
 }
 
-const updatedProduct = ( shopCard, productId, amount) => {
+function updatedProduct ( shopCard, productId, amount) {
 
     const productToUpdate = shopCard.find(product => product.productId === productId);
     productToUpdate.amount = amount;
