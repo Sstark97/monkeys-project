@@ -26,7 +26,7 @@ const ProductChild = (props) => {
 
   useEffect(() => {
 
-    let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
+    const priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
     setPrice(parseFloat(priceString).toFixed(2));
     setCurrentSize(`${props.product.sizes[0].name} meses`);
 
@@ -37,49 +37,45 @@ const ProductChild = (props) => {
     event.target.src = notFound;
     setImage(event.target.src);
 
-  }
+  };
 
   const handleImageLoaded = () => {
     counter.current += 1;
     if (counter.current === 1) {
       setLoading(false);
     }
-  }
+  };
 
 
   const handleOpenDrawInChild = (productId) => {
 
-    const producRepeat = props.shopCard.find(product => product.productId === productId)
 
-    if(!producRepeat){
-      
-      props.getProduct(productId);
-      let priceString = String(props.product.finalPrice).substring(0,2) + '.' + String(props.product.finalPrice).substring(2,4);
-      setPrice(parseFloat(priceString).toFixed(2));
+    props.getProduct(productId);
+    const priceString = `${String(props.product.finalPrice).substring(0,2)}.${String(props.product.finalPrice).substring(2,4)}`;
+    setPrice(parseFloat(priceString).toFixed(2));
 
-      let productFormated = {
-        productId: props.product.modelId,
-        name: props.product.name,
-        color: props.product.color,
-        price,
-        size: currentSize,
-        amount: 1
-      }
+    const productFormated = {
+      productId: props.product.modelId,
+      name: props.product.name,
+      color: props.product.color,
+      price,
+      size: currentSize,
+      amount: 1
+    };
 
-      props.setIntoShopCard(productFormated);
-    }
 
+    props.setIntoShopCard(productFormated);
     props.handleOpenDraw();
-  }
+
+  };
 
   const handleSizeChange = event => {
 
     event.preventDefault();
-    let size = event.target.value;
-    console.log(size)
+    const size = event.target.value;
     setCurrentSize(size);
 
-  }
+  };
 
     return (
 
@@ -95,13 +91,13 @@ const ProductChild = (props) => {
 
           <Flex direction="row" height="80%" wrap="wrap" width="100%" justifyContent="center" alignItems="center" display={loading ? "flex" : "none"}> 
 
-              <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-              />
+            <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+            />
 
           </Flex>  
 
@@ -131,13 +127,13 @@ const ProductChild = (props) => {
               <Tooltip
                 label="Add to cart"
                 bg="white"
-                placement={'top'}
-                color={'gray.800'}
-                fontSize={'1.2em'}>
+                placement='top'
+                color='gray.800'
+                fontSize='1.2em'>
 
-                <Button ref={props.btnRef} onClick={() => {handleOpenDrawInChild(props.product.modelId)}}>
+                <Button ref={props.btnRef} onClick={ () => { handleOpenDrawInChild(props.product.modelId)} }>
 
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'}/>
+                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
 
                 </Button>
 
@@ -150,7 +146,7 @@ const ProductChild = (props) => {
               <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
 
                 {price}
-                <Box as="span" color={'gray.600'} fontSize="lg">
+                <Box as="span" color='gray.600' fontSize="lg">
                   €
                 </Box>
 
@@ -171,7 +167,7 @@ const ProductChild = (props) => {
       </Flex>
 
     );
-}
+};
 
 const mapStateToProps = state => {
 
@@ -181,7 +177,7 @@ const mapStateToProps = state => {
 
   };
 
-}
+};
 
 const mapDispatchToProps = {
 

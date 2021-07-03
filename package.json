@@ -51,6 +51,7 @@
     "react-redux": "^7.2.4",
     "react-responsive-carousel": "^3.2.18",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.1.0"
+    "redux": "^4.1.0",
+    "uuid": "^3.4.0"
   }
 }

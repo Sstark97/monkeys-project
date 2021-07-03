@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import ProductChild from '../components/ProductChild';
 import ShopCard from '../components/ShopCard';
 import { connect } from 'react-redux';
-import { getSearchProduct } from '../actions';
+import { getSearchProduct, setIntoShopCard } from '../actions';
 
 const Product = props => {
 
@@ -10,6 +10,11 @@ const Product = props => {
     const [drawShow,setDrawShow] = useState(false);
 
     useEffect(() => {
+        if(props.shopCard === undefined){
+
+            props.setIntoShopCard({});
+
+        }
 
         props.getSearchProduct();
 
@@ -50,6 +55,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
 
     getSearchProduct,
+    setIntoShopCard
 
 }
 

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import Logo  from '../assets/static/logo.png';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setSearchProduct, setIntoShopCard } from '../actions';
+import { setSearchProduct, setIntoShopCard, setProducts} from '../actions';
 import '../assets/styles/Search.scss';
 import axios from 'axios';
 
@@ -18,7 +18,7 @@ const ShopHeader = ( props ) => {
 
     const [focusOnInput, setFocusOnInput] = useState(false);
     const [searchValue, setSearchValue] = useState("");
-    const [products, setProducts] = useState([]);
+    const [products, setSearchProducts] = useState([]);
     let history = useHistory();
 
     const filteredProducts = useMemo(() => {
@@ -45,11 +45,12 @@ const ShopHeader = ( props ) => {
         if(productToSearch !== ''){
 
             const resp = await axios.get(`https://private-anon-180d22d3a2-gocco.apiary-mock.com/stores/2/products/search?with_text=${searchValue}`)
-            setProducts(resp.data.results);
+            props.setProducts(resp.data.results);
+            setSearchProducts(resp.data.results)
             
         } else {
 
-            setProducts([]);
+            props.setSearchProducts([]);
 
         }
 
@@ -58,11 +59,6 @@ const ShopHeader = ( props ) => {
     const handleSetSearchProduct = product => {
 
         props.setSearchProduct(product);
-
-        if(props.shopCard === undefined){
-            props.setIntoShopCard({});
-        }
-        
         setSearchValue('');
 
     }
@@ -140,7 +136,8 @@ const ShopHeader = ( props ) => {
 const mapDispatchToProps = {
 
     setSearchProduct,
-    setIntoShopCard
+    setIntoShopCard,
+    setProducts
 }
 
 export default connect(null,mapDispatchToProps)(ShopHeader);
