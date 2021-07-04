@@ -29,6 +29,9 @@ I used Axios to build a custom hook that managed all the request to the API.
 ## React Router
 It's easy and fast to handle routes with these library
 
+## CodeFactor
+I used these tool to review the [code quality](https://www.codefactor.io/repository/github/sstark97/monkeys-project) of my project
+
 ----
 
 ### Problems in the develop
