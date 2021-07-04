@@ -1,21 +1,24 @@
-import React from 'react';
-import useAxios from '../hooks/useAxios';
-import { Flex } from '@chakra-ui/react';
-import ShopCarousel from '../containers/ShopCarousel';
-import StatsContainer from '../containers/StatsContainer';
+import React from "react";
+import useAxios from "../hooks/useAxios";
+import { Flex } from "@chakra-ui/react";
+import ShopCarousel from "../containers/ShopCarousel";
+import StatsContainer from "../containers/StatsContainer";
 
 const Home = () => {
-    const data = useAxios('categories').response;
+  const data = useAxios("categories").response;
 
-
-    return (
-        <Flex width="100%" height="100%" direction="column" justifyContent="center" alignItems="center" >
-
-            <ShopCarousel />
-            <StatsContainer />
-            
-        </Flex>
-    );
-}
+  return (
+    <Flex
+      width="100%"
+      height="100%"
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <ShopCarousel />
+      <StatsContainer />
+    </Flex>
+  );
+};
 
 export default Home;

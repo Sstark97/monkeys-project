@@ -1,62 +1,54 @@
-import React, { useState, useEffect, useRef } from 'react';
-import ProductChild from '../components/ProductChild';
-import ShopCard from '../components/ShopCard';
-import { connect } from 'react-redux';
-import { getSearchProduct, setIntoShopCard } from '../actions';
+import React, { useState, useEffect, useRef } from "react";
+import ProductChild from "../components/ProductChild";
+import ShopCard from "../components/ShopCard";
+import { connect } from "react-redux";
+import { getSearchProduct, setIntoShopCard } from "../actions";
 
-const Product = props => {
+const Product = (props) => {
+  const btnRef = useRef();
+  const [drawShow, setDrawShow] = useState(false);
 
-    const btnRef = useRef();
-    const [drawShow,setDrawShow] = useState(false);
+  useEffect(() => {
+    if (props.shopCard === undefined) {
+      props.setIntoShopCard({});
+    }
 
-    useEffect(() => {
-        if(props.shopCard === undefined){
+    props.getSearchProduct();
+  }, []);
 
-            props.setIntoShopCard({});
+  const handleOpenDraw = () => {
+    setDrawShow(true);
+  };
 
-        }
+  const handleCloseDraw = () => {
+    setDrawShow(false);
+  };
 
-        props.getSearchProduct();
-
-    },[]);
-    
-    const handleOpenDraw = () => {
-
-        setDrawShow(true);
-
-    };
-    
-    const handleCloseDraw = () => {
-
-        setDrawShow(false);
-
-    };
-
-    return ( 
-
-        <>
-            <ProductChild product={props.searchProduct} btnRef={btnRef} handleOpenDraw={handleOpenDraw} />
-            <ShopCard btnRef={btnRef} drawShow={drawShow} handleCloseDraw={handleCloseDraw}/>
-        </>
-        
-    );
-
-}
+  return (
+    <>
+      <ProductChild
+        product={props.searchProduct}
+        btnRef={btnRef}
+        handleOpenDraw={handleOpenDraw}
+      />
+      <ShopCard
+        btnRef={btnRef}
+        drawShow={drawShow}
+        handleCloseDraw={handleCloseDraw}
+      />
+    </>
+  );
+};
 
 const mapStateToProps = (state) => {
-
-    return {
-
-        searchProduct: state.searchProduct,
-
-    };
-}
+  return {
+    searchProduct: state.searchProduct,
+  };
+};
 
 const mapDispatchToProps = {
-
-    getSearchProduct,
-    setIntoShopCard
-
+  getSearchProduct,
+  setIntoShopCard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);
