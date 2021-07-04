@@ -108,9 +108,9 @@ const ShopCard = (props) => {
                     })}
                     <Text display='flex' alignSelf='flex-end'>
                       Final Price:
-                      {props.shopCard[0] !== undefined
-                        ? handleSetTotalPrice()
-                        : 0}
+                      {props.shopCard[0] !== undefined ? 
+                      handleSetTotalPrice(): 
+                      0}
                       €
                     </Text>
                   </>
