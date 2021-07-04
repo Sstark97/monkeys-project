@@ -27,17 +27,17 @@ const reducer = (state, action) => {
       return {
         ...state,
         product:
-          state.products !== undefined
-            ? state.products.find((item) => item.modelId === action.payload)
-            : {},
+          state.products !== undefined ?
+          state.products.find((item) => item.modelId === action.payload) :
+          {},
       };
     case "SET_INTO_SHOP_CARD":
       return {
         ...state,
         shopCard:
-          state.shopCard !== undefined
-            ? [...state.shopCard, action.payload]
-            : [],
+          state.shopCard !== undefined ?
+          [...state.shopCard, action.payload] :
+          [],
       };
     case "GET_SHOP_CARD":
       return [...state.shopCard];
@@ -62,9 +62,9 @@ const reducer = (state, action) => {
         ...state,
         shopProduct:
           state.shopCard.find((item) => item.productId === action.payload) !==
-          undefined
-            ? state.shopCard.find((item) => item.productId === action.payload)
-            : {},
+          undefined ?
+          state.shopCard.find((item) => item.productId === action.payload) :
+          {},
       };
     case "SET_SEARCH_PRODUCT":
       return {
