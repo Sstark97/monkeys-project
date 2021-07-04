@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import {
   getOnlyOneToShopCard,
@@ -26,17 +26,13 @@ import {
 } from "@chakra-ui/react";
 
 const ShopCard = (props) => {
-  const [totalPrice, setTotalPrice] = useState(0.0);
-
   const handleCloseDrawInChild = () => {
     props.handleCloseDraw();
-    setTotalPrice(handleSetTotalPrice());
   };
 
   const handleAmountChange = (event, productId) => {
     handleGetProduct(productId);
     props.updatedOneProduct(productId, event);
-    setTotalPrice(handleSetTotalPrice());
   };
 
   const handleSetTotalPrice = () =>
@@ -80,7 +76,6 @@ const ShopCard = (props) => {
                       return (
                         <ListItem key={uuidv4()}>
                           <Text as="h2" fontWeight="bold">
-                            {" "}
                             {product.name}
                           </Text>
                           <Text>{`Color ${product.color}, talla ${product.size}`}</Text>
@@ -91,7 +86,6 @@ const ShopCard = (props) => {
                               handleRemoveFromShopCard(product.productId);
                             }}
                           >
-                            {" "}
                             Eliminar del Carrito...
                           </Text>
                           <NumberInput
@@ -113,7 +107,7 @@ const ShopCard = (props) => {
                       );
                     })}
                     <Text display="flex" alignSelf="flex-end">
-                      Final Price:{" "}
+                      Final Price:
                       {props.shopCard[0] !== undefined
                         ? handleSetTotalPrice()
                         : 0}
@@ -133,9 +127,8 @@ const ShopCard = (props) => {
         </Drawer>
       </>
     );
-  } else {
-    return <></>;
   }
+  return <></>;
 };
 
 const mapStateToProps = (state) => {

@@ -13,7 +13,7 @@ const ShopHeader = (props) => {
   const [focusOnInput, setFocusOnInput] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [products, setSearchProducts] = useState([]);
-  let history = useHistory();
+  const history = useHistory();
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) =>
@@ -52,35 +52,35 @@ const ShopHeader = (props) => {
 
   return (
     <Flex
-      flexDirection="row"
-      width="100%"
-      my="1rem"
-      justifyContent="center"
-      alignItems="center"
+      flexDirection='row'
+      width='100%'
+      my='1rem'
+      justifyContent='center'
+      alignItems='center'
     >
       <Image
-        className="logo"
+        className='logo'
         src={Logo}
-        alt="Logo"
-        marginRight="4rem"
-        marginLeft="4rem"
-        width="44px"
+        alt='Logo'
+        marginRight='4rem'
+        marginLeft='4rem'
+        width='44px'
         onClick={() => {
           history.push("/");
         }}
       />
 
       <Flex
-        flexDirection="column"
-        width="70%"
-        alignItems="center"
-        justifyContent="center"
+        flexDirection='column'
+        width='70%'
+        alignItems='center'
+        justifyContent='center'
       >
         <Input
-          className="inputstyle"
+          className='inputstyle'
           placeholder={focusOnInput ? "¿Estas buscando algo...?" : ""}
-          alignSelf="center"
-          position="static"
+          alignSelf='center'
+          position='static'
           value={searchValue}
           onFocus={handleFocusOnInput}
           onBlur={handleFocusOutOfInput}
@@ -88,11 +88,11 @@ const ShopHeader = (props) => {
         />
 
         {searchValue !== "" ? (
-          <Flex direction="row" wrap="wrap" width="100%">
+          <Flex direction='row' wrap='wrap' width='100%'>
             {filteredProducts.length !== 0 ? (
               filteredProducts.map((child) => {
                 return (
-                  <Flex key={child.modelId} width="20%" maxHeight="fit-content">
+                  <Flex key={child.modelId} width='20%' maxHeight='fit-content'>
                     <Link
                       to={"/product/" + child.modelId}
                       onClick={() => {

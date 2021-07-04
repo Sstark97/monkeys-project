@@ -35,10 +35,10 @@ const Products = (props) => {
 
   if (props.products !== undefined) {
     return (
-      <Flex direction="row" height="80%" wrap="wrap" width="100%">
+      <Flex direction='row' height='80%' wrap='wrap' width='100%'>
         {props.products.map((child) => {
           return (
-            <Flex key={child.modelId} width="20%" maxHeight="fit-content">
+            <Flex key={child.modelId} width='20%' maxHeight='fit-content'>
               <ProductChild
                 product={child}
                 btnRef={btnRef}
@@ -59,19 +59,19 @@ const Products = (props) => {
 
   return (
     <Flex
-      direction="row"
-      height="80%"
-      wrap="wrap"
-      width="100%"
-      justifyContent="center"
-      alignItems="center"
+      direction='row'
+      height='80%'
+      wrap='wrap'
+      width='100%'
+      justifyContent='center'
+      alignItems='center'
     >
       <Spinner
-        thickness="4px"
-        speed="0.65s"
-        emptyColor="gray.200"
-        color="blue.500"
-        size="xl"
+        thickness='4px'
+        speed='0.65s'
+        emptyColor='gray.200'
+        color='blue.500'
+        size='xl'
       />
     </Flex>
   );

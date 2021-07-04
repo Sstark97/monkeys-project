@@ -9,11 +9,11 @@ const Home = () => {
 
   return (
     <Flex
-      width="100%"
-      height="100%"
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
+      width='100%'
+      height='100%'
+      direction='column'
+      justifyContent='center'
+      alignItems='center'
     >
       <ShopCarousel />
       <StatsContainer />
