@@ -24,11 +24,11 @@ const Footer = () => (
         spacing={8}
       >
         <Stack spacing={6}>
-          <Flex height={32} alignItems="center">
-            <Flex alignItems="center" height={32} width={10}>
-              <Image src={logo} alt="Logo" />
+          <Flex height={32} alignItems='center'>
+            <Flex alignItems='center' height={32} width={10}>
+              <Image src={logo} alt='Logo' />
             </Flex>
-            <Text fontWeight="extrabold">Monkey Test</Text>
+            <Text fontWeight='extrabold'>Monkey Test</Text>
           </Flex>
 
           <Text fontSize={"sm"}>© 2021 Aitor Santana. All rights reserved</Text>

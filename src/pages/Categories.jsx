@@ -15,13 +15,13 @@ const Categories = (props) => {
   if (props.category !== undefined) {
     return (
       <>
-        <Text textAlign="center" fontWeight="extrabold" fontSize="2xl">
+        <Text textAlign='center' fontWeight='extrabold' fontSize='2xl'>
           {props.category.name}
         </Text>
-        <Flex direction="row" height="10%" wrap="wrap" width="100%">
+        <Flex direction='row' height='10%' wrap='wrap' width='100%'>
           {props.category.children.map((child) => {
             return (
-              <Flex key={child.categoryId} width="20%">
+              <Flex key={child.categoryId} width='20%'>
                 <CategoryChild subCategory={child} />
               </Flex>
             );

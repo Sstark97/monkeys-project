@@ -73,54 +73,54 @@ const ProductChild = (props) => {
   };
 
   return (
-    <Flex p={50} w="full" alignItems="center" justifyContent="center">
+    <Flex p={50} w='full' alignItems='center' justifyContent='center'>
       <Box
         bg={useColorModeValue("white", "gray.800")}
-        maxW="sm"
-        borderWidth="1px"
-        rounded="lg"
-        shadow="lg"
-        position="relative"
+        maxW='sm'
+        borderWidth='1px'
+        rounded='lg'
+        shadow='lg'
+        position='relative'
       >
         <Flex
-          direction="row"
-          height="80%"
-          wrap="wrap"
-          width="100%"
-          justifyContent="center"
-          alignItems="center"
+          direction='row'
+          height='80%'
+          wrap='wrap'
+          width='100%'
+          justifyContent='center'
+          alignItems='center'
           display={loading ? "flex" : "none"}
         >
           <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="blue.500"
-            size="xl"
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='blue.500'
+            size='xl'
           />
         </Flex>
 
         <Image
           src={image}
           alt={`Picture of ${props.product.name}`}
-          roundedTop="lg"
+          roundedTop='lg'
           display={!loading ? "flex" : "none"}
           onLoad={handleImageLoaded}
           onError={handleImageNotFound}
         />
 
-        <Box p="6">
-          <Flex mt="1" justifyContent="space-between" alignContent="center">
+        <Box p='6'>
+          <Flex mt='1' justifyContent='space-between' alignContent='center'>
             <Box
-              fontSize="2xl"
-              fontWeight="semibold"
-              as="h4"
-              lineHeight="tight"
+              fontSize='2xl'
+              fontWeight='semibold'
+              as='h4'
+              lineHeight='tight'
               isTruncated
-              width="170px"
+              width='170px'
             >
               {props.product !== undefined ? (
-                <Text as="span" fontSize="md">
+                <Text as='span' fontSize='md'>
                   {props.product.name}
                 </Text>
               ) : (
@@ -129,11 +129,11 @@ const ProductChild = (props) => {
             </Box>
 
             <Tooltip
-              label="Add to cart"
-              bg="white"
-              placement="top"
-              color="gray.800"
-              fontSize="1.2em"
+              label='Add to cart'
+              bg='white'
+              placement='top'
+              color='gray.800'
+              fontSize='1.2em'
             >
               <Button
                 ref={props.btnRef}
@@ -146,10 +146,10 @@ const ProductChild = (props) => {
             </Tooltip>
           </Flex>
 
-          <Flex justifyContent="space-between" alignContent="center">
-            <Box fontSize="2xl" color={useColorModeValue("gray.800", "white")}>
+          <Flex justifyContent='space-between' alignContent='center'>
+            <Box fontSize='2xl' color={useColorModeValue("gray.800", "white")}>
               {price}
-              <Box as="span" color="gray.600" fontSize="lg">
+              <Box as='span' color='gray.600' fontSize='lg'>
                 €
               </Box>
             </Box>

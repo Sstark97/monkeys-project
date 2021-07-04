@@ -6,15 +6,15 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => (
   <>
-    <Flex height="20%" direction="column" justifyContent="center">
+    <Flex height='20%' direction='column' justifyContent='center'>
       <ShopHeader />
       <CategoriesNavBar />
     </Flex>
 
-    <Box my="3rem" width="100%">
+    <Box my='3rem' width='100%'>
       {children}
     </Box>
-    <Box marginTop="96" width="100%" height="20%">
+    <Box marginTop='96' width='100%' height='20%'>
       <Footer />
     </Box>
   </>

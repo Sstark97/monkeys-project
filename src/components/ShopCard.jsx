@@ -54,7 +54,7 @@ const ShopCard = (props) => {
       <>
         <Drawer
           isOpen={props.drawShow}
-          placement="right"
+          placement='right'
           onClose={handleCloseDrawInChild}
           finalFocusRef={props.btnRef}
           key={1}
@@ -66,22 +66,22 @@ const ShopCard = (props) => {
 
             <DrawerBody>
               <UnorderedList
-                direction="column"
-                height="100%"
-                justifyContent="space-between"
+                direction='column'
+                height='100%'
+                justifyContent='space-between'
               >
                 {props.shopCard.lenght !== 0 ? (
                   <>
                     {props.shopCard.map((product) => {
                       return (
                         <ListItem key={uuidv4()}>
-                          <Text as="h2" fontWeight="bold">
+                          <Text as='h2' fontWeight='bold'>
                             {product.name}
                           </Text>
                           <Text>{`Color ${product.color}, talla ${product.size}`}</Text>
                           <Text>{product.price}€</Text>
                           <Text
-                            cursor="pointer"
+                            cursor='pointer'
                             onClick={() => {
                               handleRemoveFromShopCard(product.productId);
                             }}
@@ -106,7 +106,7 @@ const ShopCard = (props) => {
                         </ListItem>
                       );
                     })}
-                    <Text display="flex" alignSelf="flex-end">
+                    <Text display='flex' alignSelf='flex-end'>
                       Final Price:
                       {props.shopCard[0] !== undefined
                         ? handleSetTotalPrice()
@@ -120,8 +120,8 @@ const ShopCard = (props) => {
               </UnorderedList>
             </DrawerBody>
 
-            <DrawerFooter display="flex" justifyContent="center">
-              <Button colorScheme="blue">Finalizar Compra</Button>
+            <DrawerFooter display='flex' justifyContent='center'>
+              <Button colorScheme='blue'>Finalizar Compra</Button>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

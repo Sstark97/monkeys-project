@@ -12,18 +12,18 @@ const CategoriesNavBar = (props) => {
 
   return (
     <Wrap
-      display="flex"
-      direction="row"
-      height="30%"
-      spacing="10"
-      width="100%"
-      justifyContent="center"
-      alignItems="center"
+      display='flex'
+      direction='row'
+      height='30%'
+      spacing='10'
+      width='100%'
+      justifyContent='center'
+      alignItems='center'
     >
       {data.map((category) => (
-        <WrapItem className="category" key={category.categoryId} height="100%">
+        <WrapItem className='category' key={category.categoryId} height='100%'>
           <Link to={"/category/" + category.categoryId}>
-            <Text fontWeight="light" fontSize="xl">
+            <Text fontWeight='light' fontSize='xl'>
               {category.name}
             </Text>
           </Link>

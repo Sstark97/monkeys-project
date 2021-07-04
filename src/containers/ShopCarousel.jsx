@@ -6,16 +6,16 @@ import Rebajas from "../assets/static/rebajas.png";
 import { Flex, Text } from "@chakra-ui/react";
 
 const ShopCarousel = () => (
-  <Flex width="100%" p="12">
+  <Flex width='100%' p='12'>
     <Carousel>
       <Flex>
-        <img src={Cremas} alt="Nuevos sticks y cremas solares disponibles" />
-        <Text className="legend">Nuevos Sticks y Cremas solares</Text>
+        <img src={Cremas} alt='Nuevos sticks y cremas solares disponibles' />
+        <Text className='legend'>Nuevos Sticks y Cremas solares</Text>
       </Flex>
 
       <Flex>
-        <img src={Rebajas} alt="40% de Rebajas" />
-        <Text className="legend">40% de Rebajas</Text>
+        <img src={Rebajas} alt='40% de Rebajas' />
+        <Text className='legend'>40% de Rebajas</Text>
       </Flex>
     </Carousel>
   </Flex>
